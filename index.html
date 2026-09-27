@@ -6,6 +6,8 @@
   <title>Muhammad Hamza Khan — Senior Flutter Developer & Mobile Architect</title>
   <meta name="description" content="Senior Flutter Developer & Mobile Architect with 4+ years building high-scale fintech, resilient cross-platform apps, and 0-to-1 ventures. Open to Senior Mobile Engineer & Architect opportunities." />
   <meta name="theme-color" content="#070a13" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23060911'/><rect x='4' y='4' width='92' height='92' rx='20' fill='none' stroke='%2300f0ff' stroke-width='3' stroke-opacity='0.4'/><path d='M30 24 L52 46 L30 68' fill='none' stroke='%2300f0ff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/><path d='M48 68 L70 68' fill='none' stroke='%2338bdf8' stroke-width='10' stroke-linecap='round'/></svg>" />
+  <link rel="apple-touch-icon" href="assets/auralarm_appicon.png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -818,6 +820,13 @@
       height: 8px;
       border-radius: 50%;
       background: currentColor;
+    }
+    .app-chip-icon {
+      font-size: 1rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Dynamic Telemetry Card */
@@ -2477,35 +2486,35 @@
           <div class="stage-controls">
             <div class="app-selector-chips">
               <button class="app-chip active" onclick="switchPhoneApp('auralarm')">
-                <span class="app-chip-dot" style="color: #00f0ff;"></span>
+                <span class="app-chip-icon">⏰</span>
                 <span>Auralarm</span>
               </button>
               <button class="app-chip" onclick="switchPhoneApp('babybloom')">
-                <span class="app-chip-dot" style="color: #f472b6;"></span>
+                <span class="app-chip-icon">👶</span>
                 <span>BabyBloom</span>
               </button>
               <button class="app-chip" onclick="switchPhoneApp('capsule')">
-                <span class="app-chip-dot" style="color: #38bdf8;"></span>
+                <span class="app-chip-icon">👗</span>
                 <span>Formality</span>
               </button>
               <button class="app-chip" onclick="switchPhoneApp('mixx')">
-                <span class="app-chip-dot" style="color: #60a5fa;"></span>
+                <span class="app-chip-icon">💳</span>
                 <span>Mixx by Tigo</span>
               </button>
               <button class="app-chip" onclick="switchPhoneApp('yas')">
-                <span class="app-chip-dot" style="color: #fbbf24;"></span>
+                <span class="app-chip-icon">🏦</span>
                 <span>Mixx by yas</span>
               </button>
               <button class="app-chip" onclick="switchPhoneApp('mobility')">
-                <span class="app-chip-dot" style="color: #34d399;"></span>
+                <span class="app-chip-icon">🚖</span>
                 <span>Food & Mobility</span>
               </button>
               <button class="app-chip" onclick="switchPhoneApp('watchverse')">
-                <span class="app-chip-dot" style="color: #eab308;"></span>
+                <span class="app-chip-icon">⌚</span>
                 <span>WatchVerse</span>
               </button>
               <button class="app-chip" onclick="switchPhoneApp('deepsleep')">
-                <span class="app-chip-dot" style="color: #a78bfa;"></span>
+                <span class="app-chip-icon">🌙</span>
                 <span>deepsleep</span>
               </button>
             </div>
