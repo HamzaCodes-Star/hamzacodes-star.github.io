@@ -1087,6 +1087,9 @@
       letter-spacing: 0.08em;
       margin-bottom: 0.4rem;
     }
+    .work-card-title a:hover {
+      color: #00f0ff;
+    }
     .work-card-title {
       font-family: var(--font-display);
       font-size: 1.5rem;
@@ -2564,61 +2567,75 @@
           A showcase of products engineered across tier-1 telecom & digital banking super-apps, alongside 0-to-1 proprietary mobile platforms as Founder at Nirox.
         </p>
 
-        <!-- ROW 1: Togo Telecom & SelfCare Flagships -->
+        <!-- ROW 1: Flagship Telecom & Mobile Money Super-Apps -->
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <span class="badge-pill-accent" style="color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">Enterprise Telecom & Mobile Money</span>
-            <span style="font-size: 0.82rem; color: var(--ink-dim); font-weight: 500;">Flagship Multi-Country Super-Apps (Togo Telecom & SelfCare Portal)</span>
+            <span style="font-size: 0.82rem; color: var(--ink-dim); font-weight: 500;">Flagship Multi-Country Super-Apps (Tanzania & Togo)</span>
           </div>
         </div>
         <div class="work-grid work-grid--2col" style="margin-bottom: 3.5rem;">
-          <!-- CARD 4: Mixx by Tigo -->
+          <!-- CARD 1: Mixx by Tigo (Tanzania) -->
           <article class="work-card">
-            <div class="work-card-media">
-              <img src="assets/mixx-by-tigo.png" alt="Mixx by Tigo Fintech Super App" />
-              <div class="work-card-badge badge-enterprise">Togo Telecom & Mobile Money</div>
-            </div>
+            <a href="https://play.google.com/store/apps/details?id=tz.tigo.mfsapp&hl=en" target="_blank" rel="noopener noreferrer" class="work-card-media" title="Open Mixx Tanzania on Google Play Store">
+              <img src="assets/mixx-by-tigo.png" alt="Mixx by Tigo Tanzania Fintech Super App" />
+              <div class="work-card-badge badge-enterprise">Google Play Store ↗</div>
+            </a>
             <div class="work-card-body">
               <div class="work-card-role">Senior Flutter Developer (Axian Group Limited)</div>
-              <h3 class="work-card-title">Mixx by Tigo (Togo Telecom & Mobile Money)</h3>
+              <h3 class="work-card-title">
+                <a href="https://play.google.com/store/apps/details?id=tz.tigo.mfsapp&hl=en" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Mixx by Tigo (Mixx Tanzania) ↗</a>
+              </h3>
               <p class="work-card-desc">
-                Tier-1 mobile money and banking super-application handling millions of active financial transactions. Implemented end-to-end SSL pinning, biometric verification, wallet ledgers, and seamless zero-downtime API integrations.
+                Tier-1 mobile money and banking super-application handling millions of active financial transactions across Tanzania. Implemented end-to-end SSL pinning, biometric verification, wallet ledgers, and zero-downtime banking API integrations.
               </p>
               <div class="tech-stack-row">
                 <span class="tech-pill">Flutter</span>
+                <span class="tech-pill">5M+ Installs</span>
                 <span class="tech-pill">Fintech Security</span>
                 <span class="tech-pill">SSL Pinning</span>
                 <span class="tech-pill">Biometrics</span>
-                <span class="tech-pill">RESTful APIs</span>
               </div>
-              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('mixx'); location.href='#showcase';">
-                <span>Simulate Transfer in Device</span>
-              </button>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 10px;">
+                <a href="https://play.google.com/store/apps/details?id=tz.tigo.mfsapp&hl=en" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--primary" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; text-decoration: none;">
+                  <span>▶ View on Google Play ↗</span>
+                </a>
+                <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem;" onclick="switchPhoneApp('mixx'); location.href='#showcase';">
+                  <span>Simulate in 3D Device</span>
+                </button>
+              </div>
             </div>
           </article>
 
-          <!-- CARD 5: Mixx by yas -->
+          <!-- CARD 2: Mixx Togo (Togocom / TMoney) -->
           <article class="work-card">
-            <div class="work-card-media">
-              <img src="assets/mixx-by-yas.png" alt="Mixx by yas banking" />
-              <div class="work-card-badge badge-enterprise">SelfCare & Digital Banking</div>
-            </div>
+            <a href="https://play.google.com/store/apps/details?id=tg.togocom.tmoney&hl=en" target="_blank" rel="noopener noreferrer" class="work-card-media" title="Open Mixx Togo on Google Play Store">
+              <img src="assets/mixx-by-yas.png" alt="Mixx Togo Togocom TMoney Mobile Money" />
+              <div class="work-card-badge badge-enterprise">Google Play Store ↗</div>
+            </a>
             <div class="work-card-body">
-              <div class="work-card-role">Senior Mobile Engineer (Axian Group Limited)</div>
-              <h3 class="work-card-title">Mixx by yas (SelfCare & Digital Banking)</h3>
+              <div class="work-card-role">Senior Flutter Developer (Axian Group / Togocom)</div>
+              <h3 class="work-card-title">
+                <a href="https://play.google.com/store/apps/details?id=tg.togocom.tmoney&hl=en" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Mixx Togo (Togocom & TMoney) ↗</a>
+              </h3>
               <p class="work-card-desc">
-                Customer onboarding, card issuance, KYC validation, and personalized spending analytics. Built with modular component architecture, automated widget test coverage, and high-security keystores.
+                Official Togocom & TMoney digital mobile money super-app serving millions of subscribers across Togo. Real-time bill payments, CEET electricity settlements, merchant QR, airtime purchases, and encrypted peer-to-peer transfers in West African CFA francs (FCFA).
               </p>
               <div class="tech-stack-row">
                 <span class="tech-pill">Flutter</span>
-                <span class="tech-pill">KYC Verification</span>
-                <span class="tech-pill">Modular Clean Arch</span>
-                <span class="tech-pill">Unit Testing</span>
-                <span class="tech-pill">Axian Core</span>
+                <span class="tech-pill">Togo Telecom</span>
+                <span class="tech-pill">TMoney Core</span>
+                <span class="tech-pill">FCFA Ledger</span>
+                <span class="tech-pill">QR Payments</span>
               </div>
-              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('yas'); location.href='#showcase';">
-                <span>Test in 3D Device</span>
-              </button>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 10px;">
+                <a href="https://play.google.com/store/apps/details?id=tg.togocom.tmoney&hl=en" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--primary" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; text-decoration: none;">
+                  <span>▶ View on Google Play ↗</span>
+                </a>
+                <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem;" onclick="switchPhoneApp('yas'); location.href='#showcase';">
+                  <span>Simulate in 3D Device</span>
+                </button>
+              </div>
             </div>
           </article>
         </div>
