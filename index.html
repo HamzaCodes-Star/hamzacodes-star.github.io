@@ -1,0 +1,3819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Hamza Khan — Senior Flutter Developer & Mobile Architect</title>
+  <meta name="description" content="Senior Flutter Developer & Mobile Architect with 4+ years building high-scale fintech, resilient cross-platform apps, and 0-to-1 ventures. Open to Senior Mobile Engineer & Architect opportunities." />
+  <meta name="theme-color" content="#070a13" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-dark: #060911;
+      --bg-surface: #0b1120;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.85);
+      --ink: #f8fafc;
+      --ink-muted: #94a3b8;
+      --ink-dim: #64748b;
+      --accent-cyan: #00f0ff;
+      --accent-emerald: #10b981;
+      --accent-gold: #f59e0b;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(0, 240, 255, 0.25);
+      --font-display: "Syne", sans-serif;
+      --font-serif: "Instrument Serif", Georgia, serif;
+      --font-body: "DM Sans", -apple-system, sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; color-scheme: dark; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background-color: var(--bg-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      selection-background-color: var(--accent-cyan);
+      selection-color: #000;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; border: none; background: none; cursor: pointer; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
+
+    /* Top Reading Progress */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald), var(--accent-gold));
+      z-index: 1000;
+      transition: width 0.1s linear;
+    }
+
+    /* Ambient Background Effects */
+    .bg-mesh {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 65% 55% at 15% 10%, rgba(0, 240, 255, 0.12), transparent 60%),
+        radial-gradient(ellipse 55% 45% at 85% 25%, rgba(139, 92, 246, 0.11), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 50% 85%, rgba(16, 185, 129, 0.09), transparent 60%),
+        linear-gradient(180deg, #060911 0%, #0a0f1d 40%, #070b14 100%);
+    }
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+
+    /* Container Utility */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Global Typography */
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .section-eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .section-lead {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--ink-muted);
+      max-width: 680px;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* =========================================================
+       NAVIGATION BAR
+       ========================================================= */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 1rem 0;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(6, 9, 17, 0.75);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
+    .brand-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-weight: 800;
+      font-size: 0.9rem;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+    }
+    .brand-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-size: 0.95rem;
+      color: #fff;
+    }
+    .brand-role {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: var(--accent-cyan); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.25s var(--ease);
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-pill--primary {
+      background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
+      color: #040914;
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+    }
+    .btn-pill--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.6);
+      color: #000;
+    }
+    .btn-pill--ghost {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--border-subtle);
+      color: #fff;
+    }
+    .btn-pill--ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+    .btn-pill--eu {
+      background: rgba(30, 58, 138, 0.4);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      color: #bfdbfe;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+    .btn-pill--eu:hover {
+      border-color: #60a5fa;
+      background: rgba(30, 58, 138, 0.65);
+    }
+
+    /* =========================================================
+       HERO SECTION
+       ========================================================= */
+    .hero {
+      padding: 8.5rem 0 4.5rem;
+      position: relative;
+    }
+    .hero-badge-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #6ee7b7;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 10px var(--accent-emerald);
+      animation: pulseGlow 2s infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.75rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+    .hero-headline span.gradient {
+      background: linear-gradient(135deg, #fff 20%, var(--accent-cyan) 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subhead {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+      font-weight: 400;
+      color: #cbd5e1;
+      line-height: 1.35;
+      max-width: 820px;
+      margin-bottom: 1.75rem;
+    }
+    .hero-description {
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      max-width: 660px;
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Hero Stats Bar */
+    .hero-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 1.75rem;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+    }
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      white-space: nowrap;
+    }
+    .stat-num span.accent {
+      color: var(--accent-cyan);
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-dim);
+    }
+    .stat-desc {
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      line-height: 1.4;
+    }
+
+    /* =========================================================
+       THE CROWN JEWEL: INTERACTIVE SMARTPHONE STAGE
+       ========================================================= */
+    /* =========================================================
+       ENHANCED 3D INTERACTIVE SMARTPHONE STAGE STYLES
+       ========================================================= */
+    .device-stage-section {
+      padding: 5rem 0 7rem;
+      position: relative;
+    }
+    .stage-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    /* Interactive Phone Frame */
+    .phone-perspective {
+      perspective: 1200px;
+      display: flex;
+      justify-content: center;
+    }
+    .phone-mockup {
+      width: 350px;
+      height: 720px;
+      background: #000;
+      border-radius: 50px;
+      padding: 12px;
+      box-shadow: 
+        0 25px 60px -15px rgba(0, 0, 0, 0.85),
+        0 0 50px rgba(0, 240, 255, 0.2),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.2),
+        inset 0 0 0 6px #1e293b;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .phone-mockup:hover {
+      box-shadow: 
+        0 35px 80px -15px rgba(0, 0, 0, 0.95),
+        0 0 70px rgba(0, 240, 255, 0.35),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.3),
+        inset 0 0 0 6px #1e293b;
+    }
+
+    /* Physical Hardware Buttons on Phone Frame */
+    .phone-hw-btn {
+      position: absolute;
+      background: #334155;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      z-index: 10;
+    }
+    .phone-hw-btn:hover { background: #64748b; }
+    .phone-hw-btn:active { transform: scale(0.92); }
+    .phone-hw-btn--vol-up {
+      left: -4px;
+      top: 130px;
+      width: 4px;
+      height: 44px;
+      border-radius: 4px 0 0 4px;
+    }
+    .phone-hw-btn--vol-down {
+      left: -4px;
+      top: 185px;
+      width: 4px;
+      height: 44px;
+      border-radius: 4px 0 0 4px;
+    }
+    .phone-hw-btn--power {
+      right: -4px;
+      top: 150px;
+      width: 4px;
+      height: 58px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Volume HUD Overlay */
+    .phone-vol-hud {
+      position: absolute;
+      right: 12px;
+      top: 150px;
+      width: 5px;
+      height: 90px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 4px;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+      z-index: 70;
+    }
+    .phone-vol-hud.visible { opacity: 1; }
+    .phone-vol-bar {
+      width: 100%;
+      height: 75%;
+      background: #38bdf8;
+      position: absolute;
+      bottom: 0;
+      border-radius: 4px;
+      transition: height 0.1s ease;
+    }
+
+    /* Screen Glass */
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: #090e1a;
+      border-radius: 40px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    .phone-screen.screen-off {
+      background: #020617 !important;
+    }
+    .phone-screen.screen-off .phone-content-area,
+    .phone-screen.screen-off .phone-statusbar,
+    .phone-screen.screen-off .dynamic-island {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Dynamic Island */
+    .dynamic-island {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 108px;
+      height: 26px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 9px;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    .dynamic-island.expanded {
+      width: 280px;
+      height: 60px;
+      border-radius: 30px;
+      padding: 8px 14px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.15);
+    }
+    .dynamic-lens {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0f172a;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .dynamic-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 6px var(--accent-emerald);
+      animation: pulseGreen 2s infinite;
+    }
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+    .island-expanded-view {
+      display: none;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dynamic-island.expanded .island-expanded-view { display: flex; }
+    .dynamic-island.expanded .dynamic-lens,
+    .dynamic-island.expanded .dynamic-pill-dot { display: none; }
+
+    /* Status Bar */
+    .phone-statusbar {
+      padding: 12px 20px 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      z-index: 40;
+    }
+
+    /* App Views Inside Screen */
+    .phone-content-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .phone-content-area::-webkit-scrollbar { width: 3px; }
+    .phone-content-area::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+
+    .phone-view {
+      display: none;
+      flex-direction: column;
+      height: 100%;
+      animation: phoneFadeIn 0.3s ease;
+    }
+    .phone-view.active { display: flex; }
+    @keyframes phoneFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Internal App Sub-Navigation Pills */
+    .phone-subnav {
+      display: flex;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .phone-subnav-btn {
+      flex: 1;
+      padding: 4px 6px;
+      font-size: 0.64rem;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+      background: transparent;
+      color: #94a3b8;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .phone-subnav-btn.active {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .subview { display: none; flex-direction: column; height: 100%; }
+    .subview.active { display: flex; }
+
+    /* App View Widgets */
+    .app-card-hero {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 14px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .app-icon-lg {
+      width: 58px;
+      height: 58px;
+      border-radius: 15px;
+      margin: 0 auto 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .app-title-sm {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .app-tagline {
+      font-size: 0.7rem;
+      color: var(--accent-cyan);
+      margin-bottom: 6px;
+    }
+    .soundwave-canvas {
+      width: 100%;
+      height: 44px;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 8px;
+      margin: 8px 0;
+    }
+    .alarm-pill-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 9px 12px;
+      margin-top: 6px;
+    }
+    .toggle-switch {
+      width: 38px;
+      height: 22px;
+      background: #334155;
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.25s ease;
+    }
+    .toggle-switch.on { background: var(--accent-cyan); }
+    .toggle-knob {
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.25s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .toggle-switch.on .toggle-knob { transform: translateX(16px); }
+
+    /* Interactive Gallery Preview */
+    .gallery-preview-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 310px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: 8px;
+      position: relative;
+      background: #000;
+    }
+    .gallery-preview-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: opacity 0.2s ease;
+    }
+    .gallery-thumb-row {
+      display: flex;
+      gap: 5px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .gallery-thumb-pill {
+      flex: 0 0 auto;
+      padding: 3px 8px;
+      font-size: 0.62rem;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gallery-thumb-pill.active {
+      background: var(--accent-cyan);
+      color: #040812;
+      font-weight: 700;
+      border-color: var(--accent-cyan);
+    }
+
+    /* Live Animated Canvas Map (Food & Mobility) */
+    .map-canvas-container {
+      border-radius: 14px;
+      overflow: hidden;
+      height: 220px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      margin-bottom: 10px;
+      background: #0f172a;
+    }
+    .map-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Ambient Mixer Sliders (deepsleep) */
+    .ambient-slider-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      margin-bottom: 6px;
+    }
+    .ambient-slider-row span { font-size: 0.72rem; color: #e2e8f0; width: 110px; }
+    .ambient-slider-row input[type=range] {
+      flex: 1;
+      height: 4px;
+      accent-color: var(--accent-purple);
+      cursor: pointer;
+    }
+
+    /* Right Column: App Selector & Telemetry */
+    .stage-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .app-selector-chips {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .app-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: var(--ink-dim);
+      font-weight: 600;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s var(--ease);
+      text-align: left;
+    }
+    .app-chip:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .app-chip.active {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: var(--accent-cyan);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+    }
+    .app-chip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* Dynamic Telemetry Card */
+    .stage-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+    }
+    .stage-info-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .stage-info-desc {
+      font-size: 0.9rem;
+      color: var(--ink-dim);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .stage-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+    .spec-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 8px 12px;
+    }
+    .spec-key {
+      font-size: 0.68rem;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .spec-val {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: var(--font-mono);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 992px) {
+      .stage-layout { grid-template-columns: 1fr; }
+      .app-selector-chips { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .work-section {
+      padding: 6rem 0;
+    }
+        .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+    .work-grid--2col {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    @media (max-width: 900px) {
+      .work-grid--2col {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Native Phone Bottom Navigation Bar */
+    .phone-bottom-nav {
+      height: 52px;
+      background: rgba(10, 15, 29, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 4px 6px 12px;
+      position: relative;
+      z-index: 55;
+      flex-shrink: 0;
+    }
+    .phone-nav-btn {
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      color: #64748b;
+      cursor: pointer;
+      padding: 2px 8px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      border-radius: 6px;
+    }
+    .phone-nav-btn:hover {
+      color: #94a3b8;
+    }
+    .phone-nav-btn.active {
+      color: #00f0ff;
+    }
+    .phone-nav-icon {
+      font-size: 1rem;
+      line-height: 1;
+    }
+    .phone-nav-text {
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .phone-home-indicator {
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 3.5px;
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    /* Screen UI Components */
+    .screen-action-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin: 8px 0;
+    }
+    .screen-action-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 7px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: #e2e8f0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .screen-action-btn:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(0, 240, 255, 0.3);
+      transform: translateY(-1px);
+    }
+    .screen-action-btn .sa-icon {
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+    .screen-action-btn .sa-label {
+      font-size: 0.56rem;
+      font-weight: 600;
+      color: var(--ink-dim);
+    }
+    .phone-card-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 9px 11px;
+      margin-top: 8px;
+    }
+    .phone-card-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .phone-list-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.66rem;
+    }
+    .phone-list-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .work-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s var(--ease);
+      position: relative;
+    }
+    .work-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 240, 255, 0.3);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 240, 255, 0.12);
+    }
+    .work-card-media {
+      height: 240px;
+      overflow: hidden;
+      background: #030712;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .work-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.6s var(--ease);
+    }
+    .work-card:hover .work-card-media img {
+      transform: scale(1.05);
+    }
+    .work-card-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+    .badge-approved {
+      background: rgba(16, 185, 129, 0.25);
+      border: 1px solid #10b981;
+      color: #6ee7b7;
+    }
+    .badge-enterprise {
+      background: rgba(59, 130, 246, 0.25);
+      border: 1px solid #3b82f6;
+      color: #93c5fd;
+    }
+    .badge-founder {
+      background: rgba(245, 158, 11, 0.25);
+      border: 1px solid #f59e0b;
+      color: #fde68a;
+    }
+
+    .work-card-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .work-card-role {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .work-card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .work-card-desc {
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .tech-stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* =========================================================
+       ENGINEERING CRAFT & ARCHITECTURE DEEP-DIVE
+       ========================================================= */
+    .arch-section {
+      padding: 6rem 0;
+      background: rgba(11, 17, 32, 0.6);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .arch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .arch-card:hover {
+      border-color: rgba(0, 240, 255, 0.3);
+      transform: translateY(-4px);
+    }
+    .arch-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--border-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .arch-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+    .arch-text {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    
+    .bluecard-section {
+      padding: 6rem 0;
+    }
+    .bluecard-card {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.25), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .bluecard-card::after {
+      content: "🇪🇺";
+      position: absolute;
+      right: 20px;
+      bottom: -20px;
+      font-size: 12rem;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .bluecard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .bluecard-point {
+      padding: 1.25rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .point-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .point-desc {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       EXPERIENCE & EDUCATION TIMELINE
+       ========================================================= */
+    .timeline-section {
+      padding: 6rem 0;
+    }
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+    }
+    .timeline-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2rem;
+      transition: all 0.3s ease;
+    }
+    .timeline-item:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateX(4px);
+    }
+    .timeline-time {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-company {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .timeline-location {
+      font-size: 0.8rem;
+      color: var(--ink-dim);
+    }
+    .timeline-role {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 0.75rem;
+    }
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .timeline-bullets li {
+      position: relative;
+      padding-left: 1.25rem;
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+    .timeline-bullets li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent-cyan);
+    }
+
+    /* =========================================================
+       CONTACT & FOOTER
+       ========================================================= */
+    .footer {
+      padding: 6rem 0 3rem;
+      background: #03060d;
+      border-top: 1px solid var(--border-subtle);
+      position: relative;
+    }
+    .footer-cta-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(6, 9, 17, 0.95));
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      box-shadow: 0 0 50px rgba(0, 240, 255, 0.15);
+    }
+    .footer-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .footer-lead {
+      font-size: 1.1rem;
+      color: var(--ink-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+    .footer-links-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.82rem;
+      color: var(--ink-dim);
+    }
+
+    /* Toast Notification */
+    .portfolio-toast {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      background: #0f172a;
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      z-index: 2000;
+      display: none;
+      animation: toastIn 0.3s ease;
+    }
+    @keyframes toastIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .stage-layout { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .hero-cta-group { flex-direction: column; align-items: stretch; }
+      .btn-pill { justify-content: center; }
+      .work-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Ambient Backdrop -->
+  <div class="bg-mesh"></div>
+  <div class="bg-grid"></div>
+
+  <!-- Header Navigation -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <div class="brand-avatar">HK</div>
+        <div class="brand-meta">
+          <span class="brand-title">Hamza Khan</span>
+          <span class="brand-role">Senior Mobile Architect</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#showcase">Interactive Stage</a></li>
+        <li><a href="#work">Flagship Work</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#skills">Tech Matrix</a></li>
+        <li><a href="#experience">Experience</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="Muhammad_Hamza_Khan_Resume.pdf" download class="btn-pill btn-pill--ghost" title="Download ATS PDF Resume">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>CV (PDF)</span>
+        </a>
+        <a href="https://wa.me/923125655199?text=Hi%20Hamza,%20reviewed%20your%20Flutter%20portfolio" target="_blank" rel="noopener" class="btn-pill btn-pill--primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge-wrap">
+          <span class="pulse-dot"></span>
+          <span>AVAILABLE FOR SENIOR ROLES · OPEN TO RELOCATION & REMOTE</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Building mobile apps that <br />
+          <span class="gradient">scale, perform & endure.</span>
+        </h1>
+
+        <p class="hero-subhead">
+          Muhammad Hamza Khan — Senior Flutter Developer & 0-to-1 Mobile Architect.
+        </p>
+
+        <p class="hero-description">
+          Over 4 years orchestrating high-throughput fintech solutions, strict Google Play Store production approval tracks, and clean decoupled cross-platform architecture. Specializing in high-performance Flutter, native bridges, offline-first sync engines, and security.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#showcase" class="btn-pill btn-pill--primary">
+            <span>🎮 Explore Interactive Smartphone</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="Muhammad_Hamza_Khan_Resume.pdf" download class="btn-pill btn-pill--ghost">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download Resume (PDF)</span>
+          </a>
+          
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <div class="stat-num">4+<span class="accent">Yrs</span></div>
+            <div class="stat-label">Flutter Experience</div>
+            <div class="stat-desc">Senior cross-platform architecture across Android & iOS</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">1M+<span class="accent">Installs</span></div>
+            <div class="stat-label">Production Users</div>
+            <div class="stat-desc">Millions of transactions delivered across fintech & utilities</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">100%<span class="accent">Passed</span></div>
+            <div class="stat-label">Google Play Production</div>
+            <div class="stat-desc">Passed strict 14-day 20-tester closed testing compliance</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">60<span class="accent">FPS</span></div>
+            <div class="stat-label">Fluid Performance</div>
+            <div class="stat-desc">Zero-jank UI rendering, optimized memory & frame rates</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         THE CROWN JEWEL: INTERACTIVE SMARTPHONE STAGE
+         ========================================================= -->
+    <section class="device-stage-section" id="showcase">
+      <div class="container">
+        <div class="section-eyebrow">Interactive Live Simulation</div>
+        <h2 class="section-title">Test My Work Directly in Hand.</h2>
+        <p class="section-lead">
+          Interact with simulated production builds of my applications right inside this 3D device frame. Switch between ventures, toggle live features, test store screenshots, and observe architecture in action.
+        </p>
+
+        <div class="stage-layout">
+          <!-- 3D Phone Perspective Frame -->
+          <div class="phone-perspective">
+            <div class="phone-mockup" id="phoneDevice">
+              <!-- Physical Hardware Buttons -->
+              <div class="phone-hw-btn phone-hw-btn--vol-up" onclick="adjustPhoneVolume(1)" title="Volume Up"></div>
+              <div class="phone-hw-btn phone-hw-btn--vol-down" onclick="adjustPhoneVolume(-1)" title="Volume Down"></div>
+              <div class="phone-hw-btn phone-hw-btn--power" onclick="togglePhonePower()" title="Power / Sleep"></div>
+
+              <!-- Screen Glass -->
+              <div class="phone-screen" id="phoneScreen">
+                <!-- Volume HUD Overlay -->
+                <div class="phone-vol-hud" id="phoneVolHud">
+                  <div class="phone-vol-bar" id="phoneVolBar"></div>
+                </div>
+
+                <!-- Dynamic Island -->
+                <div class="dynamic-island" id="dynamicIsland" onclick="toggleDynamicIsland()" title="Click to expand Live Activity">
+                  <div class="dynamic-lens"></div>
+                  <div class="dynamic-pill-dot" id="dynamicDot"></div>
+                  <!-- Expanded Live Activity View -->
+                  <div class="island-expanded-view" id="islandExpanded">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span id="islandIcon" style="font-size: 1rem;">⏰</span>
+                      <div>
+                        <div id="islandTitle" style="font-size: 0.72rem; font-weight: 700; color: #fff;">Auralarm Active</div>
+                        <div id="islandSubtitle" style="font-size: 0.6rem; color: #94a3b8;">Foreground Audio Service Running</div>
+                      </div>
+                    </div>
+                    <div id="islandWave" style="display: flex; gap: 2px; align-items: center;">
+                      <span style="display: inline-block; width: 3px; height: 12px; background: #38bdf8; border-radius: 2px; animation: soundWave 0.8s infinite alternate;"></span>
+                      <span style="display: inline-block; width: 3px; height: 18px; background: #38bdf8; border-radius: 2px; animation: soundWave 0.6s infinite 0.2s alternate;"></span>
+                      <span style="display: inline-block; width: 3px; height: 8px; background: #38bdf8; border-radius: 2px; animation: soundWave 0.9s infinite 0.4s alternate;"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Status Bar -->
+                <div class="phone-statusbar">
+                  <span id="phoneTime">09:41</span>
+                  <span>5G · 100%</span>
+                </div>
+
+                <div class="phone-content-area" id="phoneContentArea">
+                  
+                  <!-- ==============================================
+                       SCREEN 1: AURALARM
+                       ============================================== -->
+                  <div class="phone-view active" id="view-auralarm">
+                    <div class="phone-subnav">
+                      <button class="phone-subnav-btn active" onclick="switchSubView('auralarm', 'live', this)">⏰ Live Alarm</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('auralarm', 'gallery', this)">📸 Store Shots</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('auralarm', 'math', this)">🧩 Math Mission</button>
+                    </div>
+
+                    <!-- Subview: Live Alarm -->
+                    <div class="subview active" id="sub-auralarm-live">
+                      <div class="app-card-hero" style="margin-bottom: 8px; padding: 10px;">
+                        <img src="assets/auralarm_appicon.png" alt="Auralarm App Icon" class="app-icon-lg" style="width: 44px; height: 44px; margin-bottom: 4px;" />
+                        <div class="app-title-sm" style="font-size: 0.88rem;">Auralarm</div>
+                        <div class="app-tagline" style="margin-bottom: 6px; font-size: 0.62rem;">Smart Background Alarm & Sleep Tracker</div>
+                        <canvas class="soundwave-canvas" id="soundCanvas" style="height: 38px;"></canvas>
+                        <button class="btn-pill btn-pill--primary" style="padding: 0.3rem 0.75rem; font-size: 0.72rem; margin-top: 4px;" onclick="toggleAudioWaveform()">
+                          <span id="waveBtnLabel">▶ Test Synth Alarm Tone</span>
+                        </button>
+                      </div>
+
+                      <!-- Quick Actions Grid -->
+                      <div class="screen-action-grid">
+                        <div class="screen-action-btn" onclick="toggleAlarmSwitch()">
+                          <span class="sa-icon">⏰</span>
+                          <span class="sa-label">Alarm</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('auralarm', 'math', document.querySelectorAll('#view-auralarm .phone-subnav-btn')[2])">
+                          <span class="sa-icon">🧩</span>
+                          <span class="sa-label">Missions</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('auralarm', 'gallery', document.querySelectorAll('#view-auralarm .phone-subnav-btn')[1])">
+                          <span class="sa-icon">📸</span>
+                          <span class="sa-label">Store UI</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('Auralarm', 'Sleep Score: 92%', '💤', 2000)">
+                          <span class="sa-icon">📊</span>
+                          <span class="sa-label">Sleep</span>
+                        </div>
+                      </div>
+
+                      <div class="alarm-pill-toggle">
+                        <div>
+                          <div style="font-weight: 700; font-size: 0.82rem; color: #fff;">07:00 AM · Workday</div>
+                          <div style="font-size: 0.64rem; color: var(--ink-dim);">Foreground Service Active · Math Mission</div>
+                        </div>
+                        <div class="toggle-switch on" id="alarmSwitch" onclick="toggleAlarmSwitch()">
+                          <div class="toggle-knob"></div>
+                        </div>
+                      </div>
+
+                      <!-- Upcoming Schedule Feed -->
+                      <div class="phone-card-box">
+                        <div class="phone-card-box-header">
+                          <span>Upcoming Alarms & Schedules</span>
+                          <span style="font-size: 0.6rem; color: #38bdf8;">2 Active</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Mon – Fri · 07:00 AM</span>
+                          <span style="color: #10b981; font-weight: 600;">Math Challenge</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Sat – Sun · 08:30 AM</span>
+                          <span style="color: #fbbf24; font-weight: 600;">Gentle Wake</span>
+                        </div>
+                      </div>
+
+                      <!-- OS Diagnostics -->
+                      <div style="margin-top: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 6px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.62rem;">
+                        <span style="color: #10b981; font-weight: 600;">🛡️ Android 14/15 Battery Exemption</span>
+                        <span style="color: var(--ink-dim);">1.8% Overnight Drain</span>
+                      </div>
+                    </div>
+
+                    <!-- Subview: Store Screenshots Gallery -->
+                    <div class="subview" id="sub-auralarm-gallery">
+                      <div class="gallery-preview-frame">
+                        <img id="auralarmGalleryImg" src="assets/auralarm1.png" alt="Auralarm Google Play Store screenshot" />
+                      </div>
+                      <div class="gallery-thumb-row">
+                        <button class="gallery-thumb-pill active" onclick="setAuralarmShot(1, this)">1. Never Oversleep</button>
+                        <button class="gallery-thumb-pill" onclick="setAuralarmShot(2, this)">2. Sleep Cycle</button>
+                        <button class="gallery-thumb-pill" onclick="setAuralarmShot(3, this)">3. Math Mission</button>
+                        <button class="gallery-thumb-pill" onclick="setAuralarmShot(4, this)">4. Loud Alarm</button>
+                        <button class="gallery-thumb-pill" onclick="setAuralarmShot(5, this)">5. Circadian Stats</button>
+                      </div>
+                      <div style="font-size: 0.65rem; color: var(--ink-dim); text-align: center; margin-top: 6px;">
+                        Official Google Play Store Production Assets
+                      </div>
+                    </div>
+
+                    <!-- Subview: Wake Math Challenge -->
+                    <div class="subview" id="sub-auralarm-math">
+                      <div class="app-card-hero" style="padding: 14px 10px;">
+                        <div style="font-size: 0.72rem; color: #f87171; font-weight: 700; text-transform: uppercase;">⚠️ Wake-Up Mission Enforced</div>
+                        <div style="font-size: 1.25rem; font-weight: 800; color: #fff; margin: 8px 0; font-family: var(--font-mono);">
+                          37 × 4 + 18 = <span style="color: #38bdf8;" id="mathInput">166</span>
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--ink-dim);">Solve mental arithmetic before alarm turns off.</div>
+                      </div>
+                      <button class="btn-pill btn-pill--primary" style="width: 100%; justify-content: center; margin-top: 8px; font-size: 0.78rem;" onclick="solveMathMission()">
+                        <span>✔ Submit Verified Answer</span>
+                      </button>
+                      <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px; margin-top: 10px; font-size: 0.7rem; color: var(--ink-muted);">
+                        <div style="color: #fff; font-weight: 600; margin-bottom: 2px;">Foolproof Engine:</div>
+                        <div>• Locks phone shutdown attempt</div>
+                        <div>• Prevents task manager kill</div>
+                        <div>• Sound escalates until verified</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ==============================================
+                       SCREEN 2: BABYBLOOM
+                       ============================================== -->
+                  <div class="phone-view" id="view-babybloom">
+                    <div class="phone-subnav">
+                      <button class="phone-subnav-btn active" onclick="switchSubView('babybloom', 'sweetspot', this)">⏱ SweetSpot™</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('babybloom', 'log', this)">🍼 1-Tap Log</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('babybloom', 'who', this)">📈 WHO Curves</button>
+                    </div>
+
+                    <!-- Subview: SweetSpot -->
+                    <div class="subview active" id="sub-babybloom-sweetspot">
+                      <div class="app-card-hero" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(15, 23, 42, 0.9)); padding: 8px; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                          <div style="display: flex; align-items: center; gap: 6px; text-align: left;">
+                            <img src="assets/babybloom_icon.png" alt="BabyBloom Icon" style="width: 32px; height: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);" />
+                            <div>
+                              <div class="app-title-sm" style="font-size: 0.88rem;">BabyBloom</div>
+                              <div class="app-tagline" style="margin: 0; font-size: 0.62rem; color: #f472b6;">Milestones & Awake Windows</div>
+                            </div>
+                          </div>
+                          <span style="font-size: 0.58rem; background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); padding: 2px 6px; border-radius: 6px; font-weight: 600;">ACTIVE TRACKING</span>
+                        </div>
+                        <div style="border-radius: 8px; overflow: hidden; height: 110px; border: 1px solid rgba(255,255,255,0.1);">
+                          <img src="assets/babybloom_hero.png" alt="BabyBloom Hero" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+                        </div>
+                      </div>
+
+                      <div style="background: rgba(236, 72, 153, 0.08); border: 1px solid rgba(236, 72, 153, 0.25); border-radius: 10px; padding: 7px; text-align: center; margin-bottom: 6px;">
+                        <div style="font-size: 0.62rem; color: var(--ink-dim); text-transform: uppercase;">SweetSpot™ Nap Prediction</div>
+                        <div style="font-size: 1.1rem; font-weight: 800; color: #f472b6; margin: 1px 0;" id="babyNapTimer">Next Nap in 34m 12s</div>
+                        <div style="font-size: 0.64rem; color: #34d399;">Awake Window: 2h 15m (Optimal Window)</div>
+                      </div>
+
+                      <!-- Quick Action Logger Grid -->
+                      <div class="screen-action-grid">
+                        <div class="screen-action-btn" onclick="quickLogBaby('🍼 Formula 120ml')">
+                          <span class="sa-icon">🍼</span>
+                          <span class="sa-label">Feed</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="quickLogBaby('😴 Nap Started')">
+                          <span class="sa-icon">😴</span>
+                          <span class="sa-label">Nap</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="quickLogBaby('👶 Diaper Changed')">
+                          <span class="sa-icon">👶</span>
+                          <span class="sa-label">Diaper</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('babybloom', 'who', document.querySelectorAll('#view-babybloom .phone-subnav-btn')[2])">
+                          <span class="sa-icon">📈</span>
+                          <span class="sa-label">Growth</span>
+                        </div>
+                      </div>
+
+                      <!-- 24h Caregiver Activity Timeline -->
+                      <div class="phone-card-box">
+                        <div class="phone-card-box-header">
+                          <span>Multi-Caregiver Real-time Feed</span>
+                          <span style="font-size: 0.6rem; color: #38bdf8;">Mom & Dad Synced</span>
+                        </div>
+                        <div id="babyRecentLogs">
+                          <div class="phone-list-row">
+                            <span style="color: #fff;">11:20 AM · Tummy Time (15m)</span>
+                            <span style="color: #f472b6;">Mom ✔</span>
+                          </div>
+                          <div class="phone-list-row">
+                            <span style="color: #fff;">09:15 AM · Left Nursing (120ml)</span>
+                            <span style="color: #f472b6;">Mom ✔</span>
+                          </div>
+                          <div class="phone-list-row">
+                            <span style="color: #fff;">07:30 AM · Diaper Changed (Wet)</span>
+                            <span style="color: #38bdf8;">Dad ✔</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- WHO Percentile Badge -->
+                      <div style="margin-top: 6px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.62rem;">
+                        <span style="color: #38bdf8; font-weight: 600;">📊 WHO Growth Curve</span>
+                        <span style="color: var(--ink-dim);">7.4 kg · 62nd Percentile (Optimal)</span>
+                      </div>
+                    </div>
+
+                    <!-- Subview: 1-Tap Log -->
+                    <div class="subview" id="sub-babybloom-log">
+                      <div style="font-size: 0.75rem; font-weight: 700; color: #fff; margin-bottom: 8px;">1-Tap Pediatric Daily Logger</div>
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
+                        <button class="btn-pill btn-pill--ghost" style="padding: 8px; font-size: 0.72rem; flex-direction: column; gap: 2px;" onclick="quickLogBaby('🍼 Formula 120ml')">
+                          <span style="font-size: 1rem;">🍼</span>
+                          <span>Formula 120ml</span>
+                        </button>
+                        <button class="btn-pill btn-pill--ghost" style="padding: 8px; font-size: 0.72rem; flex-direction: column; gap: 2px;" onclick="quickLogBaby('👶 Diaper (Wet)')">
+                          <span style="font-size: 1rem;">👶</span>
+                          <span>Diaper (Wet)</span>
+                        </button>
+                        <button class="btn-pill btn-pill--ghost" style="padding: 8px; font-size: 0.72rem; flex-direction: column; gap: 2px;" onclick="quickLogBaby('🥣 Solid Food (Puree)')">
+                          <span style="font-size: 1rem;">🥣</span>
+                          <span>Solids / Puree</span>
+                        </button>
+                        <button class="btn-pill btn-pill--ghost" style="padding: 8px; font-size: 0.72rem; flex-direction: column; gap: 2px;" onclick="quickLogBaby('💊 Vitamin D Drops')">
+                          <span style="font-size: 1rem;">💊</span>
+                          <span>Vitamin D</span>
+                        </button>
+                      </div>
+                      <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px; font-size: 0.7rem;">
+                        <div style="color: #fff; font-weight: 600; margin-bottom: 4px;">Recent Logs (Multi-Caregiver Sync):</div>
+                        <div id="babyRecentLogs" style="color: var(--ink-dim); line-height: 1.5;">
+                          <div>• 09:15 AM — Nursing Left (15m) ✔</div>
+                          <div>• 07:30 AM — Diaper changed (Mom) ✔</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Subview: WHO Curves -->
+                    <div class="subview" id="sub-babybloom-who">
+                      <div style="font-size: 0.75rem; font-weight: 700; color: #fff; margin-bottom: 6px;">WHO Growth Percentile Curves</div>
+                      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px; text-align: center; margin-bottom: 8px;">
+                        <svg viewBox="0 0 200 100" style="width: 100%; height: 90px;">
+                          <!-- Grid lines -->
+                          <line x1="20" y1="80" x2="190" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                          <line x1="20" y1="50" x2="190" y2="50" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                          <line x1="20" y1="20" x2="190" y2="20" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                          <!-- 97th percentile -->
+                          <path d="M 20 60 Q 100 35 190 15" fill="none" stroke="#f472b6" stroke-dasharray="2,2" stroke-width="1"/>
+                          <!-- 50th percentile (Median) -->
+                          <path d="M 20 75 Q 100 50 190 30" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+                          <!-- Baby's actual curve -->
+                          <path d="M 20 78 Q 100 52 190 28" fill="none" stroke="#10b981" stroke-width="2"/>
+                          <circle cx="190" cy="28" r="3.5" fill="#10b981"/>
+                        </svg>
+                        <div style="display: flex; justify-content: space-around; font-size: 0.65rem; color: var(--ink-dim); margin-top: 4px;">
+                          <span style="color: #10b981;">● Baby: 7.4 kg (62nd %)</span>
+                          <span style="color: #38bdf8;">― WHO 50th %</span>
+                        </div>
+                      </div>
+                      <div style="font-size: 0.68rem; color: var(--ink-muted); text-align: center;">
+                        Standardized pediatric growth assessment models.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ==============================================
+                       SCREEN 3: CAPSULE APP
+                       ============================================== -->
+                  <div class="phone-view" id="view-capsule">
+                    <div class="phone-subnav">
+                      <button class="phone-subnav-btn active" onclick="switchSubView('capsule', 'wardrobe', this)">👗 Wardrobe</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('capsule', 'stylist', this)">✨ Stylist AI</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('capsule', 'sync', this)">🔄 SQLite Sync</button>
+                    </div>
+
+                    <!-- Subview: Wardrobe Ingest -->
+                    <div class="subview active" id="sub-capsule-wardrobe">
+                      <div class="app-card-hero" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8)); padding: 8px; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                          <div style="display: flex; align-items: center; gap: 6px; text-align: left;">
+                            <img src="assets/capsule_icon.jpg" alt="Formality App Icon" style="width: 32px; height: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);" />
+                            <div>
+                              <div class="app-title-sm" style="font-size: 0.88rem;">Formality</div>
+                              <div class="app-tagline" style="margin: 0; font-size: 0.62rem;">Wardrobe Architect & Stylist</div>
+                            </div>
+                          </div>
+                          <span style="font-size: 0.58rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 2px 6px; border-radius: 6px; font-weight: 600;">48 PIECES</span>
+                        </div>
+                        <div style="border-radius: 8px; overflow: hidden; height: 110px; border: 1px solid rgba(255,255,255,0.1);">
+                          <img src="assets/capsule_hero.jpg" alt="Formality Wardrobe UI" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" />
+                        </div>
+                      </div>
+
+                      <!-- Quick Actions Grid -->
+                      <div class="screen-action-grid">
+                        <div class="screen-action-btn" onclick="simulateVisionScan()">
+                          <span class="sa-icon">📸</span>
+                          <span class="sa-label">AI Scan</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('capsule', 'stylist', document.querySelectorAll('#view-capsule .phone-subnav-btn')[1])">
+                          <span class="sa-icon">✨</span>
+                          <span class="sa-label">Stylist</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('capsule', 'sync', document.querySelectorAll('#view-capsule .phone-subnav-btn')[2])">
+                          <span class="sa-icon">🔄</span>
+                          <span class="sa-label">SQLite</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('Formality', 'Clean Capsule Ratio: 86%', '👗', 2000)">
+                          <span class="sa-icon">📊</span>
+                          <span class="sa-label">Capsule</span>
+                        </div>
+                      </div>
+
+                      <!-- Daily Stylist Recommendation -->
+                      <div class="phone-card-box">
+                        <div class="phone-card-box-header">
+                          <span>Today's AI Stylist Pairing</span>
+                          <span style="font-size: 0.6rem; color: #38bdf8;">94% Match</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Merino Wool Knit + Chinos</span>
+                          <span style="color: var(--ink-dim);">18°C Mild ⛅</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Dark Cognac Penny Loafers</span>
+                          <span style="color: #10b981;">Clean Casual</span>
+                        </div>
+                      </div>
+
+                      <!-- Category Breakdown -->
+                      <div style="display: flex; gap: 4px; overflow-x: auto; margin-top: 8px; font-size: 0.6rem;">
+                        <span style="background: rgba(255,255,255,0.06); padding: 3px 8px; border-radius: 6px; color: #fff; white-space: nowrap;">Tops (18)</span>
+                        <span style="background: rgba(255,255,255,0.04); padding: 3px 8px; border-radius: 6px; color: var(--ink-dim); white-space: nowrap;">Outerwear (8)</span>
+                        <span style="background: rgba(255,255,255,0.04); padding: 3px 8px; border-radius: 6px; color: var(--ink-dim); white-space: nowrap;">Pants (12)</span>
+                        <span style="background: rgba(255,255,255,0.04); padding: 3px 8px; border-radius: 6px; color: var(--ink-dim); white-space: nowrap;">Shoes (10)</span>
+                      </div>
+
+                      <!-- SQLite Engine Status -->
+                      <div style="margin-top: 8px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.62rem;">
+                        <span style="color: #38bdf8; font-weight: 600;">⚡ Offline-First SQLite DB</span>
+                        <span style="color: #10b981;">0 Pending Deltas ✔</span>
+                      </div>
+                    </div>
+
+                    <!-- Subview: Stylist AI -->
+                    <div class="subview" id="sub-capsule-stylist">
+                      <div class="app-card-hero" style="padding: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                          <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 700;">DAILY STYLIST PAIRING</span>
+                          <span style="font-size: 0.65rem; color: var(--ink-dim);">Munich 18°C ⛅</span>
+                        </div>
+                        <div style="border-radius: 8px; overflow: hidden; height: 150px; border: 1px solid rgba(255,255,255,0.1);">
+                          <img src="assets/capsule_flatlay.jpg" alt="Daily outfit match flatlay" style="width: 100%; height: 100%; object-fit: cover;" />
+                        </div>
+                      </div>
+                      <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 10px; padding: 8px; text-align: center;">
+                        <div style="font-size: 0.75rem; font-weight: 700; color: #38bdf8;">Smart Casual Match · 94% Harmony</div>
+                        <div style="font-size: 0.65rem; color: var(--ink-muted); margin-top: 2px;">Merino Wool Knit + Tailored Chinos + Loafers</div>
+                      </div>
+                    </div>
+
+                    <!-- Subview: SQLite Sync -->
+                    <div class="subview" id="sub-capsule-sync">
+                      <div class="sync-status-box" style="padding: 12px;">
+                        <div style="font-size: 0.68rem; color: var(--ink-dim); text-transform: uppercase;">Sync & Ingestion Engine</div>
+                        <div style="font-size: 0.88rem; font-weight: 700; color: #38bdf8; margin: 3px 0;" id="syncStatusText">Local SQLite In Sync</div>
+
+                        <div class="sync-diagram" style="margin: 10px 0;">
+                          <div class="sync-node" style="font-size: 0.68rem; padding: 4px 8px;">Wardrobe Cache</div>
+                          <div class="sync-arrow">⇄</div>
+                          <div class="sync-node" style="font-size: 0.68rem; padding: 4px 8px;">Vision AI Tag</div>
+                        </div>
+
+                        <button class="btn-pill btn-pill--ghost" style="padding: 0.35rem 0.75rem; font-size: 0.74rem; width: 100%; justify-content: center;" onclick="simulateCapsuleSync()">
+                          <span>⚡ Trigger Delta Sync</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ==============================================
+                       SCREEN 4: MIXX BY TIGO
+                       ============================================== -->
+                  <div class="phone-view" id="view-mixx">
+                    <div class="phone-subnav">
+                      <button class="phone-subnav-btn active" onclick="switchSubView('mixx', 'wallet', this)">💳 Wallet SuperApp</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('mixx', 'security', this)">🛡️ SSL & Bio</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('mixx', 'ttt', this)">🎮 Multiplayer</button>
+                    </div>
+
+                    <!-- Subview: Wallet -->
+                    <div class="subview active" id="sub-mixx-wallet">
+                      <div class="fintech-card" style="padding: 12px; margin-bottom: 8px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                          <div class="fintech-chip"></div>
+                          <span style="font-size: 0.64rem; font-family: var(--font-mono); color: #93c5fd;">TOGO TELECOM · TMONEY</span>
+                        </div>
+                        <div style="font-size: 0.62rem; color: #93c5fd; text-transform: uppercase; margin-top: 4px;">Available Balance</div>
+                        <div class="fintech-balance" id="fintechBal" style="font-size: 1.35rem; margin: 2px 0;">€ 14,850.00</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.62rem; color: #bfdbfe; font-family: var(--font-mono);">
+                          <span>**** 4892 · Lomé Main</span>
+                          <span>9,750,000 XOF</span>
+                        </div>
+                      </div>
+
+                      <!-- Quick Action 4-Grid -->
+                      <div class="screen-action-grid">
+                        <div class="screen-action-btn" onclick="simulateTransfer()">
+                          <span class="sa-icon">💸</span>
+                          <span class="sa-label">Transfer</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('Togocom', '4G Fibre 50Mbps Active', '📱', 2000)">
+                          <span class="sa-icon">📱</span>
+                          <span class="sa-label">Airtime</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('TMoney Bills', 'CEET Electricity Paid', '🧾', 2000)">
+                          <span class="sa-icon">🧾</span>
+                          <span class="sa-label">Bills</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('TMoney Cashout', 'Agent QR Generated', '🏦', 2000)">
+                          <span class="sa-icon">🏦</span>
+                          <span class="sa-label">Cashout</span>
+                        </div>
+                      </div>
+
+                      <button class="btn-pill btn-pill--primary" style="width: 100%; justify-content: center; margin-bottom: 8px; font-size: 0.74rem; padding: 0.38rem;" onclick="simulateTransfer()">
+                        <span>💸 Send Instant Transfer (€250)</span>
+                      </button>
+
+                      <!-- Recent Transactions Feed -->
+                      <div class="phone-card-box">
+                        <div class="phone-card-box-header">
+                          <span>TMoney & Telecom Activity</span>
+                          <span style="font-size: 0.6rem; color: #34d399;">Live Ledger</span>
+                        </div>
+                        <div id="txListContainer">
+                          <div class="phone-list-row">
+                            <div>
+                              <div style="color: #fff; font-weight: 500;">Togocom 4G Fibre 50Mbps</div>
+                              <div style="font-size: 0.58rem; color: var(--ink-dim);">Monthly Telecom Pass</div>
+                            </div>
+                            <span style="color: #f87171; font-weight: 600;">- € 22.80</span>
+                          </div>
+                          <div class="phone-list-row">
+                            <div>
+                              <div style="color: #fff; font-weight: 500;">P2P Transfer · Koffi M.</div>
+                              <div style="font-size: 0.58rem; color: var(--ink-dim);">TMoney Mobile Money</div>
+                            </div>
+                            <span style="color: #34d399; font-weight: 600;">+ € 38.00</span>
+                          </div>
+                          <div class="phone-list-row">
+                            <div>
+                              <div style="color: #fff; font-weight: 500;">Supermarché Champion Lomé</div>
+                              <div style="font-size: 0.58rem; color: var(--ink-dim);">Merchant QR Payment</div>
+                            </div>
+                            <span style="color: #f87171; font-weight: 600;">- € 12.90</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Security Indicator -->
+                      <div style="margin-top: 8px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.62rem;">
+                        <span style="color: #38bdf8; font-weight: 600;">🛡️ SHA-256 SSL Pinned</span>
+                        <span style="color: #10b981;">Biometric Keystore Active ✔</span>
+                      </div>
+                    </div>
+
+                    <!-- Subview: Security -->
+                    <div class="subview" id="sub-mixx-security">
+                      <div class="app-card-hero" style="padding: 12px;">
+                        <div style="font-size: 0.8rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Enterprise Fintech Defense</div>
+                        <div style="text-align: left; font-size: 0.7rem; color: var(--ink-dim); line-height: 1.6;">
+                          <div style="color: #34d399; margin-bottom: 4px;">✔ SHA-256 SSL Pinning Active</div>
+                          <div style="color: #34d399; margin-bottom: 4px;">✔ Hardware Biometrics (FaceID/Touch)</div>
+                          <div style="color: #34d399; margin-bottom: 4px;">✔ Encrypted SQLite Keystore Storage</div>
+                          <div style="color: #34d399;">✔ Zero Jailbreak/Root Vulnerability</div>
+                        </div>
+                      </div>
+                      <div style="font-size: 0.65rem; color: var(--ink-dim); text-align: center;">
+                        Axian Group Limited Mobile Money Standard
+                      </div>
+                    </div>
+
+                    <!-- Subview: Multiplayer Tic-Tac-Toe -->
+                    <div class="subview" id="sub-mixx-ttt">
+                      <div style="font-size: 0.75rem; font-weight: 700; color: #fff; text-align: center; margin-bottom: 4px;">WebSockets Real-Time Game</div>
+                      <div style="font-size: 0.65rem; color: var(--ink-dim); text-align: center; margin-bottom: 8px;">Multiplayer gamification engine built for Axian Group</div>
+                      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; width: 170px; margin: 0 auto 10px;">
+                        <button class="btn-pill btn-pill--ghost" style="height: 48px; justify-content: center; font-size: 1.1rem;" onclick="playTTT(0, this)">X</button>
+                        <button class="btn-pill btn-pill--ghost" style="height: 48px; justify-content: center; font-size: 1.1rem;" onclick="playTTT(1, this)">O</button>
+                        <button class="btn-pill btn-pill--ghost" style="height: 48px; justify-content: center; font-size: 1.1rem;" onclick="playTTT(2, this)">X</button>
+                        <button class="btn-pill btn-pill--ghost" style="height: 48px; justify-content: center; font-size: 1.1rem;" onclick="playTTT(3, this)">O</button>
+                        <button class="btn-pill btn-pill--ghost" style="height: 48px; justify-content: center; font-size: 1.1rem; color: #38bdf8;" onclick="playTTT(4, this)">X</button>
+                        <button class="btn-pill btn-pill--ghost" style="height: 48px; justify-content: center; font-size: 1.1rem;" onclick="playTTT(5, this)">-</button>
+                        <button class="btn-pill btn-pill--ghost" style="height: 48px; justify-content: center; font-size: 1.1rem;" onclick="playTTT(6, this)">O</button>
+                        <button class="btn-pill btn-pill--ghost" style="height: 48px; justify-content: center; font-size: 1.1rem;" onclick="playTTT(7, this)">-</button>
+                        <button class="btn-pill btn-pill--ghost" style="height: 48px; justify-content: center; font-size: 1.1rem; color: #38bdf8;" onclick="playTTT(8, this)">X</button>
+                      </div>
+                      <div style="font-size: 0.65rem; color: #34d399; text-align: center;">✔ Low-Latency State Synchronization</div>
+                    </div>
+                  </div>
+
+                  <!-- ==============================================
+                       SCREEN 5: MIXX BY YAS
+                       ============================================== -->
+                  <div class="phone-view" id="view-yas">
+                    <div class="phone-subnav">
+                      <button class="phone-subnav-btn active" onclick="switchSubView('yas', 'banking', this)">🏦 Digital Banking</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('yas', 'vault', this)">💰 Savings Vault</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('yas', 'kyc', this)">🆔 KYC</button>
+                    </div>
+
+                    <!-- Subview: Banking -->
+                    <div class="subview active" id="sub-yas-banking">
+                      <div class="app-card-hero" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(15, 23, 42, 0.9)); padding: 8px; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                          <div style="display: flex; align-items: center; gap: 6px;">
+                            <img src="assets/mixx-hello.png" alt="yas banking" style="height: 32px; width: 32px; border-radius: 8px; object-fit: cover;" />
+                            <div>
+                              <div class="app-title-sm" style="font-size: 0.88rem;">yas Finance</div>
+                              <div class="app-tagline" style="color: #fbbf24; margin: 0; font-size: 0.62rem;">SelfCare & Wealth Banking</div>
+                            </div>
+                          </div>
+                          <span style="font-size: 0.58rem; background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); padding: 2px 6px; border-radius: 6px; font-weight: 600;">AXIAN CORE</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); border-radius: 8px; padding: 7px 10px; text-align: left; border: 1px solid rgba(255,255,255,0.06);">
+                          <div style="font-size: 0.62rem; color: var(--ink-dim);">Savings Vault (6.5% Annual APY)</div>
+                          <div style="font-size: 1.25rem; font-weight: 800; color: #fbbf24; font-family: var(--font-mono); margin: 2px 0;">€ 24,500.00</div>
+                          <div style="display: flex; justify-content: space-between; font-size: 0.6rem; color: #34d399;">
+                            <span>✔ Biometric KYC Verified</span>
+                            <span>+ € 132.50 this month</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Quick Action Grid -->
+                      <div class="screen-action-grid">
+                        <div class="screen-action-btn" onclick="showIslandNotification('yas Cards', 'Visa Gold **** 7201 Active', '💳', 2000)">
+                          <span class="sa-icon">💳</span>
+                          <span class="sa-label">Card</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('yas', 'vault', document.querySelectorAll('#view-yas .phone-subnav-btn')[1])">
+                          <span class="sa-icon">💰</span>
+                          <span class="sa-label">Vault</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('yas FX', 'EUR / XOF Mid-market rate', '🔄', 2000)">
+                          <span class="sa-icon">🔄</span>
+                          <span class="sa-label">FX Swap</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('yas', 'kyc', document.querySelectorAll('#view-yas .phone-subnav-btn')[2])">
+                          <span class="sa-icon">🆔</span>
+                          <span class="sa-label">KYC</span>
+                        </div>
+                      </div>
+
+                      <!-- Spending Analytics Breakdown -->
+                      <div class="phone-card-box">
+                        <div class="phone-card-box-header">
+                          <span>Monthly Spending & SelfCare</span>
+                          <span style="font-size: 0.6rem; color: #fbbf24;">€ 1,240.00</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Axian Telecom & Fibre Services</span>
+                          <span style="color: var(--ink-dim);">€ 45.00 (Telecom)</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Spotify & Cloud Subscriptions</span>
+                          <span style="color: var(--ink-dim);">€ 28.50 (Media)</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Monthly Yield Credited</span>
+                          <span style="color: #34d399; font-weight: 600;">+ € 6.50 (Yield)</span>
+                        </div>
+                      </div>
+
+                      <!-- SelfCare Portal Status -->
+                      <div style="margin-top: 8px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 8px; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.62rem;">
+                        <span style="color: #fbbf24; font-weight: 600;">🏦 Axian Digital Bank</span>
+                        <span style="color: #34d399;">IBAN: LU82 9201 4482 ✔</span>
+                      </div>
+                    </div>
+
+                    <!-- Subview: Vault Calculator -->
+                    <div class="subview" id="sub-yas-vault">
+                      <div style="font-size: 0.75rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Compound Interest Calculator</div>
+                      <div style="background: rgba(255,255,255,0.03); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
+                        <div style="font-size: 0.65rem; color: var(--ink-dim);">Deposit Amount: <span id="depositDisplay" style="color: #fbbf24; font-weight: 700;">€ 10,000</span></div>
+                        <input type="range" min="1000" max="50000" step="1000" value="10000" style="width: 100%; accent-color: #fbbf24; margin: 8px 0;" oninput="updateYasInterest(this.value)" />
+                        <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #fff;">
+                          <span>Annual APY (6.5%):</span>
+                          <span id="interestEarned" style="color: #34d399; font-weight: 700;">+ € 650.00</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Subview: KYC -->
+                    <div class="subview" id="sub-yas-kyc">
+                      <div class="app-card-hero" style="padding: 12px;">
+                        <div style="font-size: 0.8rem; font-weight: 700; color: #fff;">Biometric KYC Pipeline</div>
+                        <div style="margin: 8px 0; font-size: 0.7rem; color: var(--ink-muted);">Automated OCR passport scanning and liveness detection.</div>
+                        <div style="background: rgba(52, 211, 153, 0.1); border: 1px solid #34d399; border-radius: 8px; padding: 6px; font-size: 0.68rem; color: #34d399;">
+                          ✔ Liveness Proof Passed (Score: 99.4%)
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ==============================================
+                       SCREEN 6: FOOD & MOBILITY LOGISTICS
+                       ============================================== -->
+                  <div class="phone-view" id="view-mobility">
+                    <div class="phone-subnav">
+                      <button class="phone-subnav-btn active" onclick="switchSubView('mobility', 'ride', this)">📍 Driver Map</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('mobility', 'food', this)">🍔 Food Orders</button>
+                    </div>
+
+                    <!-- Subview: Driver Route Map -->
+                    <div class="subview active" id="sub-mobility-ride">
+                      <div class="map-canvas-container" style="height: 120px; margin-bottom: 8px;">
+                        <canvas class="map-canvas" id="mobilityCanvas"></canvas>
+                        <div style="position: absolute; bottom: 6px; left: 6px; right: 6px; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(8px); border-radius: 8px; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.1);">
+                          <div>
+                            <div style="font-size: 0.68rem; font-weight: 700; color: #fff;" id="driverEtaText">Driver arriving in 2m 15s</div>
+                            <div style="font-size: 0.58rem; color: var(--ink-dim);">Hamza · Toyota Prius (4.98 ★)</div>
+                          </div>
+                          <span style="font-size: 1rem;">🚗</span>
+                        </div>
+                      </div>
+
+                      <!-- Quick Action Grid -->
+                      <div class="screen-action-grid">
+                        <div class="screen-action-btn" onclick="requestRideDemo()">
+                          <span class="sa-icon">🚖</span>
+                          <span class="sa-label">Ride</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('mobility', 'food', document.querySelectorAll('#view-mobility .phone-subnav-btn')[1])">
+                          <span class="sa-icon">🍔</span>
+                          <span class="sa-label">Food</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('Driver Call', 'Calling Hamza (Prius)...', '📞', 2000)">
+                          <span class="sa-icon">📞</span>
+                          <span class="sa-label">Call</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('Trip Share', 'Live Link Copied', '🔗', 1800)">
+                          <span class="sa-icon">🔗</span>
+                          <span class="sa-label">Share</span>
+                        </div>
+                      </div>
+
+                      <button class="btn-pill btn-pill--primary" style="width: 100%; justify-content: center; font-size: 0.74rem; padding: 0.38rem; margin-bottom: 8px;" onclick="requestRideDemo()">
+                        <span>🚖 Request Express Ride (€18.50)</span>
+                      </button>
+
+                      <!-- Ride Status Milestones -->
+                      <div class="phone-card-box">
+                        <div class="phone-card-box-header">
+                          <span>Live Trip Milestones</span>
+                          <span style="font-size: 0.6rem; color: #10b981;">PIN: 4821</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">1. Driver Assigned & Dispatched</span>
+                          <span style="color: #10b981;">✔ Done</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">2. En Route to Pickup Location</span>
+                          <span style="color: #38bdf8;">● 2m Away</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">3. Payment Pre-Authorized (Apple Pay)</span>
+                          <span style="color: #10b981;">€ 18.50 ✔</span>
+                        </div>
+                      </div>
+
+                      <!-- Technology Stack Bar -->
+                      <div style="margin-top: 8px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.62rem;">
+                        <span style="color: #38bdf8; font-weight: 600;">📍 Google Maps SDK & WebSockets</span>
+                        <span style="color: var(--ink-dim);">60 FPS Polyline</span>
+                      </div>
+                    </div>
+
+                    <!-- Subview: Food Logistics -->
+                    <div class="subview" id="sub-mobility-food">
+                      <div class="app-card-hero" style="padding: 10px; margin-bottom: 8px;">
+                        <img src="assets/food-restaurants.png" alt="Food delivery" style="height: 130px; width: 100%; object-fit: cover; border-radius: 8px;" />
+                      </div>
+                      <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 8px 10px; font-size: 0.7rem; color: var(--ink-muted);">
+                        <div style="color: #fff; font-weight: 600; margin-bottom: 2px;">Active Order Status:</div>
+                        <div style="color: #38bdf8;">🍳 Artisan Kitchen — In Delivery Route</div>
+                        <div style="font-size: 0.62rem; color: var(--ink-dim); margin-top: 2px;">Live dispatching & payment settlement</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ==============================================
+                       SCREEN 7: WATCHVERSE
+                       ============================================== -->
+                  <div class="phone-view" id="view-watchverse">
+                    <div class="phone-subnav">
+                      <button class="phone-subnav-btn active" onclick="switchSubView('watchverse', 'vault', this)">⌚ Horology Vault</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('watchverse', 'bid', this)">🔨 Live Bid</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('watchverse', 'escrow', this)">🔒 Escrow</button>
+                    </div>
+
+                    <!-- Subview: Vault -->
+                    <div class="subview active" id="sub-watchverse-vault">
+                      <div class="app-card-hero" style="background: linear-gradient(135deg, rgba(217, 119, 6, 0.25), rgba(15, 23, 42, 0.9)); padding: 8px; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                          <div style="display: flex; align-items: center; gap: 6px; text-align: left;">
+                            <img src="assets/watchverse_icon.png" alt="WatchVerse Icon" style="width: 32px; height: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);" />
+                            <div>
+                              <div class="app-title-sm" style="font-size: 0.88rem;">WatchVerse</div>
+                              <div class="app-tagline" style="margin: 0; font-size: 0.62rem; color: #fbbf24;">Luxury Horology & Escrow</div>
+                            </div>
+                          </div>
+                          <span style="font-size: 0.58rem; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: #fbbf24; padding: 2px 6px; border-radius: 6px; font-weight: 600;">LIVE AUCTION</span>
+                        </div>
+                        <div style="background: #000; border-radius: 8px; padding: 7px 10px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
+                          <div style="font-size: 0.82rem; font-weight: 700; color: #fff;">Rolex Submariner Date 41mm</div>
+                          <div style="font-size: 0.62rem; color: var(--ink-dim); font-family: var(--font-mono);">Ref: 126610LN · Oystersteel · 2024</div>
+                          <div style="font-size: 1.15rem; font-weight: 800; color: #fbbf24; margin-top: 2px;" id="watchCurrentPrice">€ 14,200.00</div>
+                        </div>
+                      </div>
+
+                      <!-- Quick Action Grid -->
+                      <div class="screen-action-grid">
+                        <div class="screen-action-btn" onclick="placeWatchBid()">
+                          <span class="sa-icon">💎</span>
+                          <span class="sa-label">Bid +€250</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('watchverse', 'bid', document.querySelectorAll('#view-watchverse .phone-subnav-btn')[1])">
+                          <span class="sa-icon">🔨</span>
+                          <span class="sa-label">Floor</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('watchverse', 'escrow', document.querySelectorAll('#view-watchverse .phone-subnav-btn')[2])">
+                          <span class="sa-icon">🔒</span>
+                          <span class="sa-label">Escrow</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('WatchVerse', 'Added to Watchlist', '⭐', 1800)">
+                          <span class="sa-icon">⭐</span>
+                          <span class="sa-label">Track</span>
+                        </div>
+                      </div>
+
+                      <button class="btn-pill btn-pill--primary" style="width: 100%; justify-content: center; font-size: 0.74rem; padding: 0.38rem; margin-bottom: 8px;" onclick="placeWatchBid()">
+                        <span>💎 Submit Instant Live Bid (+ €250)</span>
+                      </button>
+
+                      <!-- Provenance & Specs -->
+                      <div class="phone-card-box">
+                        <div class="phone-card-box-header">
+                          <span>Provenance & Verification</span>
+                          <span style="font-size: 0.6rem; color: #10b981;">✔ NFC Chip Verified</span>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 0.62rem;">
+                          <div style="background: rgba(255,255,255,0.02); padding: 5px 6px; border-radius: 6px;">
+                            <div style="color: var(--ink-dim);">Movement</div>
+                            <div style="color: #fff; font-weight: 600;">Rolex 3235</div>
+                          </div>
+                          <div style="background: rgba(255,255,255,0.02); padding: 5px 6px; border-radius: 6px;">
+                            <div style="color: var(--ink-dim);">Set Condition</div>
+                            <div style="color: #fff; font-weight: 600;">Box & Papers 2024</div>
+                          </div>
+                          <div style="background: rgba(255,255,255,0.02); padding: 5px 6px; border-radius: 6px;">
+                            <div style="color: var(--ink-dim);">Power Reserve</div>
+                            <div style="color: #fff; font-weight: 600;">70h Chronometer</div>
+                          </div>
+                          <div style="background: rgba(255,255,255,0.02); padding: 5px 6px; border-radius: 6px;">
+                            <div style="color: var(--ink-dim);">Water Resistance</div>
+                            <div style="color: #fff; font-weight: 600;">300m / 1,000ft</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Live Bid Stream -->
+                      <div class="phone-card-box">
+                        <div class="phone-card-box-header">
+                          <span>Live Bidding Floor</span>
+                          <span style="font-size: 0.6rem; color: #fbbf24;">Ends in 04:12</span>
+                        </div>
+                        <div id="watchBidFeed">
+                          <div class="phone-list-row">
+                            <span style="color: #fff;">🇩🇪 Bidder #409 (Munich)</span>
+                            <span style="color: #fbbf24; font-weight: 700;">€ 14,200</span>
+                          </div>
+                          <div class="phone-list-row">
+                            <span style="color: var(--ink-dim);">🇨🇭 Bidder #118 (Zurich)</span>
+                            <span style="color: var(--ink-dim);">€ 13,950</span>
+                          </div>
+                          <div class="phone-list-row">
+                            <span style="color: var(--ink-dim);">🇦🇪 Bidder #082 (Dubai)</span>
+                            <span style="color: var(--ink-dim);">€ 13,700</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Escrow Protection Badge -->
+                      <div style="margin-top: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.62rem;">
+                        <span style="color: #10b981; font-weight: 600;">🛡️ Cryptographic Escrow Vault</span>
+                        <span style="color: var(--ink-dim);">Munich Custody #DE-09</span>
+                      </div>
+                    </div>
+
+                    <!-- Subview: Live Bid -->
+                    <div class="subview" id="sub-watchverse-bid">
+                      <div style="font-size: 0.75rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Live Auction Floor</div>
+                      <div style="background: rgba(255,255,255,0.03); border-radius: 10px; padding: 10px; font-size: 0.7rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                          <span>Bidder #409 (Munich):</span>
+                          <span style="color: #fbbf24; font-weight: 700;">€ 14,200</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                          <span>Bidder #118 (Zurich):</span>
+                          <span style="color: var(--ink-dim);">€ 13,950</span>
+                        </div>
+                        <div style="font-size: 0.62rem; color: #34d399; margin-top: 6px;">
+                          ✔ Reserve Price Met · Auction Ends in 04:12
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Subview: Escrow -->
+                    <div class="subview" id="sub-watchverse-escrow">
+                      <div class="app-card-hero" style="padding: 12px;">
+                        <div style="font-size: 0.8rem; font-weight: 700; color: #fff;">Cryptographic Escrow</div>
+                        <div style="font-size: 0.68rem; color: var(--ink-dim); margin-top: 4px; line-height: 1.5;">
+                          Buyer funds held in escrow until independent master watchmaker physical authentication and NFC chip handshake.
+                        </div>
+                        <div style="margin-top: 8px; font-size: 0.68rem; color: #34d399;">
+                          ✔ Physical Authenticator Network
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ==============================================
+                       SCREEN 8: DEEPSLEEP
+                       ============================================== -->
+                  <div class="phone-view" id="view-deepsleep">
+                    <div class="phone-subnav">
+                      <button class="phone-subnav-btn active" onclick="switchSubView('deepsleep', 'score', this)">📊 Sleep Score</button>
+                      <button class="phone-subnav-btn" onclick="switchSubView('deepsleep', 'mixer', this)">🎵 Ambient Mixer</button>
+                    </div>
+
+                    <!-- Subview: Sleep Score -->
+                    <div class="subview active" id="sub-deepsleep-score">
+                      <div class="app-card-hero" style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.4), rgba(15, 23, 42, 0.9)); padding: 8px; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                          <div style="display: flex; align-items: center; gap: 6px;">
+                            <img src="assets/deepsleep-bedtime.png" alt="deepsleep" style="height: 32px; width: 32px; border-radius: 8px; object-fit: cover;" />
+                            <div>
+                              <div class="app-title-sm" style="font-size: 0.88rem;">deepsleep</div>
+                              <div class="app-tagline" style="margin: 0; font-size: 0.62rem; color: #a78bfa;">Cycle Tracker & Audio Engine</div>
+                            </div>
+                          </div>
+                          <span style="font-size: 0.58rem; background: rgba(167, 139, 250, 0.15); color: #a78bfa; border: 1px solid rgba(167, 139, 250, 0.3); padding: 2px 6px; border-radius: 6px; font-weight: 600;">OPTIMAL</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.4); border-radius: 8px; padding: 7px 10px; text-align: center; border: 1px solid rgba(255,255,255,0.06);">
+                          <div style="font-size: 0.62rem; color: var(--ink-dim);">Last Night's Sleep Quality</div>
+                          <div style="font-size: 1.3rem; font-weight: 800; color: #a78bfa; font-family: var(--font-display); margin: 2px 0;">88% Optimal</div>
+                          <div style="font-size: 0.62rem; color: #34d399;">7h 42m Asleep · +14m REM Stage</div>
+                        </div>
+                      </div>
+
+                      <!-- Quick Action Grid -->
+                      <div class="screen-action-grid">
+                        <div class="screen-action-btn" onclick="toggleAmbientPlayback()">
+                          <span class="sa-icon">🌧️</span>
+                          <span class="sa-label">Rain</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="switchSubView('deepsleep', 'mixer', document.querySelectorAll('#view-deepsleep .phone-subnav-btn')[1])">
+                          <span class="sa-icon">🎵</span>
+                          <span class="sa-label">Mixer</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('deepsleep', 'Smart Wake Set: 07:15 AM', '⏰', 2000)">
+                          <span class="sa-icon">⏰</span>
+                          <span class="sa-label">Wake</span>
+                        </div>
+                        <div class="screen-action-btn" onclick="showIslandNotification('deepsleep', 'Circadian Trend: +6% vs last week', '📈', 2000)">
+                          <span class="sa-icon">📈</span>
+                          <span class="sa-label">Trends</span>
+                        </div>
+                      </div>
+
+                      <!-- Sleep Stages Breakdown -->
+                      <div class="phone-card-box">
+                        <div class="phone-card-box-header">
+                          <span>Sleep Architecture Stages</span>
+                          <span style="font-size: 0.6rem; color: #a78bfa;">7h 42m Total</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Deep Slow-Wave Sleep</span>
+                          <span style="color: #a78bfa; font-weight: 600;">2h 15m (29%)</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Rapid Eye Movement (REM)</span>
+                          <span style="color: #38bdf8; font-weight: 600;">1h 48m (23%)</span>
+                        </div>
+                        <div class="phone-list-row">
+                          <span style="color: #fff;">Light Restorative Sleep</span>
+                          <span style="color: var(--ink-dim);">3h 39m (48%)</span>
+                        </div>
+                      </div>
+
+                      <!-- Background Audio Status -->
+                      <div style="margin-top: 8px; background: rgba(167, 139, 250, 0.08); border: 1px solid rgba(167, 139, 250, 0.2); border-radius: 8px; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.62rem;">
+                        <span style="color: #a78bfa; font-weight: 600;">🌙 Multi-Track Synthesizer Engine</span>
+                        <span style="color: #34d399;"><2.0% Battery Drain ✔</span>
+                      </div>
+                    </div>
+
+                    <!-- Subview: Ambient Mixer -->
+                    <div class="subview" id="sub-deepsleep-mixer">
+                      <div style="font-size: 0.75rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Live Ambient Soundscape Mixer</div>
+                      
+                      <div class="ambient-slider-row">
+                        <span>🌧️ Rain Ambience</span>
+                        <input type="range" min="0" max="100" value="70" oninput="updateMixerVolume('rain', this.value)" />
+                      </div>
+                      <div class="ambient-slider-row">
+                        <span>🌊 White Noise</span>
+                        <input type="range" min="0" max="100" value="40" oninput="updateMixerVolume('noise', this.value)" />
+                      </div>
+                      <div class="ambient-slider-row">
+                        <span>🧠 Delta Waves</span>
+                        <input type="range" min="0" max="100" value="50" oninput="updateMixerVolume('delta', this.value)" />
+                      </div>
+
+                      <button class="btn-pill btn-pill--ghost" style="width: 100%; justify-content: center; font-size: 0.72rem; margin-top: 6px;" onclick="toggleAmbientPlayback()">
+                        <span id="ambientPlayBtn">▶ Play Relaxing Soundscape</span>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Native Bottom Navigation Bar -->
+                <div class="phone-bottom-nav" id="phoneBottomNav">
+                  <button class="phone-nav-btn active" onclick="handlePhoneNavTab(0, this)">
+                    <span class="phone-nav-icon" id="navIcon0">⏰</span>
+                    <span class="phone-nav-text" id="navText0">Alarms</span>
+                  </button>
+                  <button class="phone-nav-btn" onclick="handlePhoneNavTab(1, this)">
+                    <span class="phone-nav-icon" id="navIcon1">🧩</span>
+                    <span class="phone-nav-text" id="navText1">Missions</span>
+                  </button>
+                  <button class="phone-nav-btn" onclick="handlePhoneNavTab(2, this)">
+                    <span class="phone-nav-icon" id="navIcon2">📊</span>
+                    <span class="phone-nav-text" id="navText2">Stats</span>
+                  </button>
+                  <button class="phone-nav-btn" onclick="handlePhoneNavTab(3, this)">
+                    <span class="phone-nav-icon" id="navIcon3">⚙️</span>
+                    <span class="phone-nav-text" id="navText3">Settings</span>
+                  </button>
+                  <div class="phone-home-indicator"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage Right Column: App Selector & Telemetry -->
+          <div class="stage-controls">
+            <div class="app-selector-chips">
+              <button class="app-chip active" onclick="switchPhoneApp('auralarm')">
+                <span class="app-chip-dot" style="color: #00f0ff;"></span>
+                <span>Auralarm</span>
+              </button>
+              <button class="app-chip" onclick="switchPhoneApp('babybloom')">
+                <span class="app-chip-dot" style="color: #f472b6;"></span>
+                <span>BabyBloom</span>
+              </button>
+              <button class="app-chip" onclick="switchPhoneApp('capsule')">
+                <span class="app-chip-dot" style="color: #38bdf8;"></span>
+                <span>Formality</span>
+              </button>
+              <button class="app-chip" onclick="switchPhoneApp('mixx')">
+                <span class="app-chip-dot" style="color: #60a5fa;"></span>
+                <span>Mixx by Tigo</span>
+              </button>
+              <button class="app-chip" onclick="switchPhoneApp('yas')">
+                <span class="app-chip-dot" style="color: #fbbf24;"></span>
+                <span>Mixx by yas</span>
+              </button>
+              <button class="app-chip" onclick="switchPhoneApp('mobility')">
+                <span class="app-chip-dot" style="color: #34d399;"></span>
+                <span>Food & Mobility</span>
+              </button>
+              <button class="app-chip" onclick="switchPhoneApp('watchverse')">
+                <span class="app-chip-dot" style="color: #eab308;"></span>
+                <span>WatchVerse</span>
+              </button>
+              <button class="app-chip" onclick="switchPhoneApp('deepsleep')">
+                <span class="app-chip-dot" style="color: #a78bfa;"></span>
+                <span>deepsleep</span>
+              </button>
+            </div>
+
+            <!-- Dynamic Telemetry Card -->
+            <div class="stage-info-card" id="stageInfoCard">
+              <div class="stage-info-title" id="stageInfoTitle">
+                <span>Auralarm</span>
+                <span class="badge-pill-accent">0-to-1 Founder</span>
+              </div>
+              <p class="stage-info-desc" id="stageInfoDesc">
+                Spearheaded from concept to Google Play Production Approval. Solved rigorous background audio & foreground notification survival across Android 14 and 15 strict battery policies. Successfully conducted the mandatory 20-tester 14-day closed testing track and secured production rollout approval.
+              </p>
+
+              <div class="stage-specs-grid" id="stageSpecs">
+                <div class="spec-item">
+                  <div class="spec-key">Architecture</div>
+                  <div class="spec-val">BLoC + Clean Architecture</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-key">Core Challenge</div>
+                  <div class="spec-val">Android 14/15 Background Audio</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-key">Play Store Status</div>
+                  <div class="spec-val" style="color: #34d399;">Production Approved ✔</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-key">Package ID</div>
+                  <div class="spec-val">com.duodesire.auralarm</div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <a href="#work" class="btn-pill btn-pill--ghost" style="font-size: 0.82rem; padding: 0.45rem 1rem;">
+                  <span>Explore Case Study</span>
+                </a>
+                <span style="font-size: 0.75rem; color: var(--ink-dim); font-family: var(--font-mono);">
+                  Interactive simulation running live in browser
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FLAGSHIP VENTURES & WORK
+         ========================================================= -->
+    <!-- =========================================================
+         FLAGSHIP VENTURES & WORK
+         ========================================================= -->
+    <section class="work-section" id="work">
+      <div class="container">
+        <div class="section-eyebrow">Production Portfolio</div>
+        <h2 class="section-title">Engineered for Performance & Scale.</h2>
+        <p class="section-lead">
+          A showcase of products engineered across tier-1 telecom & digital banking super-apps, alongside 0-to-1 proprietary mobile platforms as Founder at Nirox.
+        </p>
+
+        <!-- ROW 1: Togo Telecom & SelfCare Flagships -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="badge-pill-accent" style="color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">Enterprise Telecom & Mobile Money</span>
+            <span style="font-size: 0.82rem; color: var(--ink-dim); font-weight: 500;">Flagship Multi-Country Super-Apps (Togo Telecom & SelfCare Portal)</span>
+          </div>
+        </div>
+        <div class="work-grid work-grid--2col" style="margin-bottom: 3.5rem;">
+          <!-- CARD 4: Mixx by Tigo -->
+          <article class="work-card">
+            <div class="work-card-media">
+              <img src="assets/mixx-by-tigo.png" alt="Mixx by Tigo Fintech Super App" />
+              <div class="work-card-badge badge-enterprise">Togo Telecom & Mobile Money</div>
+            </div>
+            <div class="work-card-body">
+              <div class="work-card-role">Senior Flutter Developer (Axian Group Limited)</div>
+              <h3 class="work-card-title">Mixx by Tigo (Togo Telecom & Mobile Money)</h3>
+              <p class="work-card-desc">
+                Tier-1 mobile money and banking super-application handling millions of active financial transactions. Implemented end-to-end SSL pinning, biometric verification, wallet ledgers, and seamless zero-downtime API integrations.
+              </p>
+              <div class="tech-stack-row">
+                <span class="tech-pill">Flutter</span>
+                <span class="tech-pill">Fintech Security</span>
+                <span class="tech-pill">SSL Pinning</span>
+                <span class="tech-pill">Biometrics</span>
+                <span class="tech-pill">RESTful APIs</span>
+              </div>
+              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('mixx'); location.href='#showcase';">
+                <span>Simulate Transfer in Device</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CARD 5: Mixx by yas -->
+          <article class="work-card">
+            <div class="work-card-media">
+              <img src="assets/mixx-by-yas.png" alt="Mixx by yas banking" />
+              <div class="work-card-badge badge-enterprise">SelfCare & Digital Banking</div>
+            </div>
+            <div class="work-card-body">
+              <div class="work-card-role">Senior Mobile Engineer (Axian Group Limited)</div>
+              <h3 class="work-card-title">Mixx by yas (SelfCare & Digital Banking)</h3>
+              <p class="work-card-desc">
+                Customer onboarding, card issuance, KYC validation, and personalized spending analytics. Built with modular component architecture, automated widget test coverage, and high-security keystores.
+              </p>
+              <div class="tech-stack-row">
+                <span class="tech-pill">Flutter</span>
+                <span class="tech-pill">KYC Verification</span>
+                <span class="tech-pill">Modular Clean Arch</span>
+                <span class="tech-pill">Unit Testing</span>
+                <span class="tech-pill">Axian Core</span>
+              </div>
+              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('yas'); location.href='#showcase';">
+                <span>Test in 3D Device</span>
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- ROW 2: Nirox Venture Studio Products -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="badge-pill-accent" style="color: #00f0ff; border-color: rgba(0, 240, 255, 0.3);">Nirox Independent Venture Studio</span>
+            <span style="font-size: 0.82rem; color: var(--ink-dim); font-weight: 500;">0-to-1 Proprietary Mobile Applications</span>
+          </div>
+        </div>
+        <div class="work-grid" style="margin-bottom: 3.5rem;">
+          <!-- CARD 1: Auralarm -->
+          <article class="work-card">
+            <div class="work-card-media">
+              <img src="assets/auralarm1.png" alt="Auralarm Google Play Store listing" />
+              <div class="work-card-badge badge-approved">Nirox · Google Play Approved ✔</div>
+            </div>
+            <div class="work-card-body">
+              <div class="work-card-role">Founder & Principal Mobile Architect</div>
+              <h3 class="work-card-title">Auralarm</h3>
+              <p class="work-card-desc">
+                Smart audio & alarm platform built with custom foreground services and battery-exempt background execution. Managed the entire Google Play Store compliance track (20 active testers for 14 continuous days), passed Google policy audits, and achieved public production release.
+              </p>
+              <div class="tech-stack-row">
+                <span class="tech-pill">Flutter</span>
+                <span class="tech-pill">Foreground Services</span>
+                <span class="tech-pill">Android 14/15 Policies</span>
+                <span class="tech-pill">Google Play Console</span>
+                <span class="tech-pill">BLoC</span>
+              </div>
+              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('auralarm'); location.href='#showcase';">
+                <span>Test in 3D Device</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CARD 2: BabyBloom -->
+          <article class="work-card">
+            <div class="work-card-media">
+              <img src="assets/babybloom_hero.png" alt="BabyBloom infant sleep and milestones" style="object-position: center;" />
+              <div class="work-card-badge badge-founder">Nirox · Closed Testing Track</div>
+            </div>
+            <div class="work-card-body">
+              <div class="work-card-role">Mobile Architect & Co-Founder</div>
+              <h3 class="work-card-title">BabyBloom</h3>
+              <p class="work-card-desc">
+                All-in-one child development & infant sleep companion. Formulated predictive SweetSpot™ awake window nap scheduling, WHO growth percentile curve plotting, and multi-caregiver real-time sync with ultra-dim OLED night-mode feeding logging.
+              </p>
+              <div class="tech-stack-row">
+                <span class="tech-pill">Flutter</span>
+                <span class="tech-pill">SweetSpot™ Engine</span>
+                <span class="tech-pill">WHO Percentiles</span>
+                <span class="tech-pill">Multi-Caregiver Sync</span>
+                <span class="tech-pill">OLED Theme</span>
+              </div>
+              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('babybloom'); location.href='#showcase';">
+                <span>Test in 3D Device</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CARD 3: Capsule App -->
+          <article class="work-card">
+            <div class="work-card-media">
+              <img src="assets/capsule_hero.jpg" alt="Formality Minimalist Wardrobe App & Daily Stylist" style="object-position: top center;" />
+              <div class="work-card-badge badge-founder">Nirox · Studio Venture</div>
+            </div>
+            <div class="work-card-body">
+              <div class="work-card-role">Lead Mobile Architect & Co-Founder</div>
+              <h3 class="work-card-title">Formality — Smart Wardrobe</h3>
+              <p class="work-card-desc">
+                Minimalist Wardrobe Architect & Daily Stylist application engineered in Flutter. Features an offline-first SQLite database architecture, AI vision ingestion for garment cataloging, weather-aware outfit matching algorithms, and automated ASO keyword optimization.
+              </p>
+              <div class="tech-stack-row">
+                <span class="tech-pill">Flutter</span>
+                <span class="tech-pill">Vision AI Ingestion</span>
+                <span class="tech-pill">Offline SQLite</span>
+                <span class="tech-pill">Outfit Matching Engine</span>
+                <span class="tech-pill">ASO Optimization</span>
+              </div>
+              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('capsule'); location.href='#showcase';">
+                <span>Test in 3D Device</span>
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- ROW 3: Commercial Logistics, Horology Escrow & Audio -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="badge-pill-accent">Mobility, Escrow & Audio Systems</span>
+            <span style="font-size: 0.82rem; color: var(--ink-dim); font-weight: 500;">On-Demand Logistics, NFC Verification & Health Tech</span>
+          </div>
+        </div>
+        <div class="work-grid">
+          <!-- CARD 6: On-Demand Delivery & Mobility -->
+          <article class="work-card">
+            <div class="work-card-media">
+              <img src="assets/food-restaurants.png" alt="Food delivery and ride hailing" />
+              <div class="work-card-badge badge-enterprise">Mobility & Maps</div>
+            </div>
+            <div class="work-card-body">
+              <div class="work-card-role">Mobile Engineer</div>
+              <h3 class="work-card-title">Food & Ride Logistics</h3>
+              <p class="work-card-desc">
+                High-concurrency on-demand logistics application with real-time driver tracking, Google Maps polyline routing, live order statuses via WebSockets, and payment gateway integration.
+              </p>
+              <div class="tech-stack-row">
+                <span class="tech-pill">Flutter</span>
+                <span class="tech-pill">Google Maps SDK</span>
+                <span class="tech-pill">WebSockets</span>
+                <span class="tech-pill">Location Services</span>
+                <span class="tech-pill">Polyline Route</span>
+              </div>
+              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('mobility'); location.href='#showcase';">
+                <span>View Driver Map in Device</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CARD 7: WatchVerse Luxury Marketplace -->
+          <article class="work-card">
+            <div class="work-card-media" style="background: #0f172a; display: flex; align-items: center; justify-content: center;">
+              <img src="assets/watchverse_icon.png" alt="WatchVerse luxury horology marketplace" style="width: 140px; height: 140px; object-fit: contain; margin: 40px auto;" />
+              <div class="work-card-badge badge-founder">Horology & Escrow</div>
+            </div>
+            <div class="work-card-body">
+              <div class="work-card-role">Mobile Architect & Venture Founder</div>
+              <h3 class="work-card-title">WatchVerse</h3>
+              <p class="work-card-desc">
+                High-end luxury watch marketplace with cryptographic buyer-seller escrow, physical authenticator inspection workflows, anti-counterfeit NFC chip integration, and real-time live auction bidding.
+              </p>
+              <div class="tech-stack-row">
+                <span class="tech-pill">Flutter</span>
+                <span class="tech-pill">Escrow Workflows</span>
+                <span class="tech-pill">NFC Verification</span>
+                <span class="tech-pill">WebSockets Auction</span>
+                <span class="tech-pill">BLoC</span>
+              </div>
+              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('watchverse'); location.href='#showcase';">
+                <span>Test in 3D Device</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- CARD 8: deepsleep -->
+          <article class="work-card">
+            <div class="work-card-media">
+              <img src="assets/deepsleep-stories.png" alt="deepsleep tracker and soundscapes" />
+              <div class="work-card-badge badge-enterprise">Health & Audio</div>
+            </div>
+            <div class="work-card-body">
+              <div class="work-card-role">Mobile Engineer</div>
+              <h3 class="work-card-title">deepsleep</h3>
+              <p class="work-card-desc">
+                Sleep cycle monitoring, smart wake algorithms, and ambient soundscapes. Engineered audio engine that mixes local synthesized sounds seamlessly with remote streams while remaining resilient against OS process termination.
+              </p>
+              <div class="tech-stack-row">
+                <span class="tech-pill">Flutter</span>
+                <span class="tech-pill">Audio Engine</span>
+                <span class="tech-pill">Health Metrics</span>
+                <span class="tech-pill">Canvas Charts</span>
+              </div>
+              <button class="btn-pill btn-pill--ghost" style="padding: 0.4rem 0.9rem; font-size: 0.8rem; align-self: flex-start;" onclick="switchPhoneApp('deepsleep'); location.href='#showcase';">
+                <span>Test Soundscape in Device</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div></section>
+
+    <!-- =========================================================
+         ENGINEERING ARCHITECTURE DEEP-DIVE
+         ========================================================= -->
+    <section class="arch-section" id="architecture">
+      <div class="container">
+        <div class="section-eyebrow">Engineering Rigor</div>
+        <h2 class="section-title">How I Build for Robustness.</h2>
+        <p class="section-lead">
+          German engineering teams expect clean patterns, testable code, and high operational reliability. Here is how I structure enterprise mobile codebases:
+        </p>
+
+        <div class="arch-grid">
+          <div class="arch-card">
+            <div class="arch-icon">🏛️</div>
+            <h3 class="arch-title">Clean Architecture</h3>
+            <p class="arch-text">
+              Strict separation into <b>Domain</b> (pure entities & use-cases), <b>Data</b> (repositories, datasources, API models), and <b>Presentation</b> (UI & State). Business rules never depend on UI framework details.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">⚡</div>
+            <h3 class="arch-title">Predictable State (BLoC / Riverpod)</h3>
+            <p class="arch-text">
+              Unidirectional data flows using event-driven state machines. Ensures zero UI state race conditions, deterministic testability, and isolated business logic across large teams.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">🔒</div>
+            <h3 class="arch-title">Fintech-Grade Security</h3>
+            <p class="arch-text">
+              Enforced SSL/TLS certificate pinning to prevent Man-in-the-Middle (MitM) exploits. Biometric auth integration (FaceID / Fingerprint), and hardware-backed Encrypted Storage for JWTs and secrets.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">🔄</div>
+            <h3 class="arch-title">Offline-First & Delta Sync</h3>
+            <p class="arch-text">
+              Resilient local caching via SQLite/Isar with conflict resolution strategies. Users experience instant optimistic UI updates even in poor network connectivity conditions.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">🚀</div>
+            <h3 class="arch-title">Automated CI/CD & Fastlane</h3>
+            <p class="arch-text">
+              GitHub Actions automated workflows triggering static code analysis (<code>dart analyze</code>), unit/widget test runners, code coverage metrics, and Fastlane deployment to Play Store & TestFlight tracks.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">🛡️</div>
+            <h3 class="arch-title">App Store Policy Mastery</h3>
+            <p class="arch-text">
+              Navigating Google Play's 2024 compliance policy overhauls (20-tester closed testing tracks, strict foreground service type declarations, and background power exemptions) with 100% first-pass production approval.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TECHNICAL CAPABILITIES MATRIX
+         ========================================================= -->
+    <section class="arch-section" id="skills" style="background: transparent;">
+      <div class="container">
+        <div class="section-eyebrow">Comprehensive Toolkit</div>
+        <h2 class="section-title">Technical Capabilities & Tools.</h2>
+        <p class="section-lead">
+          A full-stack mobile development arsenal built over 4+ years of shipping commercial apps.
+        </p>
+
+        <div class="arch-grid">
+          <div class="arch-card">
+            <div class="arch-icon">📱</div>
+            <h3 class="arch-title">Core Mobile Tech</h3>
+            <p class="arch-text">
+              <b>Flutter, Dart, Android (Java/Kotlin), iOS (Swift basics)</b>. Deep platform channel interop, custom renderers, memory profiling, and high-frequency animations.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">🧠</div>
+            <h3 class="arch-title">State & Architecture</h3>
+            <p class="arch-text">
+              <b>BLoC, Riverpod, Provider, Clean Architecture</b>. Strict separation of concerns, repository pattern, immutable models with Freezed, and predictable unidirectional data flows.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">💾</div>
+            <h3 class="arch-title">Data & Persistence</h3>
+            <p class="arch-text">
+              <b>SQLite, Isar, Hive, Drift, SharedPreferences</b>. Local encrypted storage, delta sync conflict resolution, and offline-first data caching strategies.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">☁️</div>
+            <h3 class="arch-title">Cloud & Backend</h3>
+            <p class="arch-text">
+              <b>Firebase, Supabase, RESTful APIs, WebSockets, GraphQL</b>. Real-time pub/sub notifications, cloud functions, and robust edge data synchronization.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">🛠️</div>
+            <h3 class="arch-title">Testing & DevOps</h3>
+            <p class="arch-text">
+              <b>Unit Testing, Widget Testing, Mocktail, Fastlane, GitHub Actions</b>. End-to-end automated pipelines, app signing, and continuous deployment to store tracks.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-icon">📈</div>
+            <h3 class="arch-title">Store & Growth Operations</h3>
+            <p class="arch-text">
+              <b>App Store Optimization (ASO), Google Play Console, TestFlight</b>. Keyword density analysis, store policy audits, closed testing tracks, and conversion optimization.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         EXPERIENCE & EDUCATION TIMELINE
+         ========================================================= -->
+    <section class="timeline-section" id="experience">
+      <div class="container">
+        <div class="section-eyebrow">Track Record</div>
+        <h2 class="section-title">Experience & Education.</h2>
+        <p class="section-lead">
+          A continuous timeline of shipping production mobile applications from 0 to millions of users.
+        </p>
+
+        <div class="timeline-list">
+          <!-- Item: Nirox -->
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-time">2026 — Present</div>
+              <div class="timeline-company">Nirox</div>
+              <div class="timeline-location">Independent Venture Studio</div>
+            </div>
+            <div>
+              <div class="timeline-role">Founder & Principal Mobile Architect</div>
+              <ul class="timeline-bullets">
+                <li><b>Auralarm:</b> Architected from 0 to 1; mastered Android 14/15 background battery policies; navigated the mandatory 20-tester 14-day closed testing track and secured direct Google Play Production Approval.</li>
+                <li><b>Formality App:</b> Engineered minimalist wardrobe architect with decoupled SQLite repository, vision AI batch capture, and offline delta sync.</li>
+                <li><b>BabyBloom:</b> Built infant awake-windows and milestone companion with SweetSpot™ predictive schedules and WHO growth percentiles.</li>
+                <li>Deployed automated Fastlane and GitHub Actions CI/CD workflows for multi-track store distributions.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item: Veroke -->
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-time">07/2025 — Present</div>
+              <div class="timeline-company">Veroke</div>
+              <div class="timeline-location">Enterprise Mobile Squad</div>
+            </div>
+            <div>
+              <div class="timeline-role">Sr. Flutter Developer</div>
+              <ul class="timeline-bullets">
+                <li>Architect and maintain enterprise Flutter applications for Saudi Arabian and Middle Eastern corporate clients, aligning with regional business regulations and data compliance.</li>
+                <li>Engineer resilient RESTful API layers, background synchronization workers, and real-time state listeners for seamless data synchronization.</li>
+                <li>Collaborate with cross-border distributed teams to deliver enterprise-grade mobile solutions for Middle East markets with high performance.</li>
+                <li>Ensure long-term application maintainability, 60 FPS UI performance, and zero-defect release cadences.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item: Evamp & Saanga / Axian Group -->
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-time">07/2023 — 07/2025</div>
+              <div class="timeline-company">Evamp & Saanga (Axian Group Limited)</div>
+              <div class="timeline-location">Fintech Engineering Division</div>
+            </div>
+            <div>
+              <div class="timeline-role">Flutter Developer (Fintech Super Apps)</div>
+              <ul class="timeline-bullets">
+                <li>Spearheaded core mobile development for tier-1 Fintech super-apps (<b>Mixx by Tigo</b>, <b>Mixx by yas</b>, <b>TMoney</b>) serving millions of active banking users.</li>
+                <li>Enforced SHA-256 SSL/TLS certificate pinning, biometric authentication (FaceID/Fingerprint), and encrypted on-device storage.</li>
+                <li>Implemented comprehensive testing (unit, widget, integration) to systematically prevent regression defects.</li>
+                <li>Engineered real-time multiplayer features and live event feeds utilizing WebSockets and Firebase Cloud Messaging.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item: Sigi Technologies -->
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-time">06/2022 — 06/2023</div>
+              <div class="timeline-company">Sigi Technologies</div>
+              <div class="timeline-location">Rawalpindi / Islamabad</div>
+            </div>
+            <div>
+              <div class="timeline-role">Flutter Developer</div>
+              <ul class="timeline-bullets">
+                <li>Designed and shipped multiple cross-platform mobile apps for Android and iOS using MVVM, MVP, and Clean architectures.</li>
+                <li>Implemented secure payment gateway integrations and banking APIs with automated error handling.</li>
+                <li>Collaborated with backend teams to streamline API data schemas, reducing app initialization latency by 30%.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-time">2018 — 2022</div>
+              <div class="timeline-company">COMSATS University</div>
+              <div class="timeline-location">Islamabad, Pakistan</div>
+            </div>
+            <div>
+              <div class="timeline-role">Bachelor of Science in Computer Science (BS CS)</div>
+              <ul class="timeline-bullets">
+                <li><b>German Anabin Database Status: H+ (Fully Recognized)</b> equivalent to a German university degree.</li>
+                <li>Core studies: Data Structures & Algorithms, Object-Oriented Analysis, Distributed Systems, Software Architecture.</li>
+                <li>Final Year Project: Mobile AI Vision Integration (OCR & Object Detection).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FOOTER & CONTACT
+         ========================================================= -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-cta-card">
+          <div class="section-eyebrow" style="color: var(--accent-cyan);">Ready For What's Next</div>
+          <h2 class="footer-headline">Let's Build Exceptional Mobile Products.</h2>
+          <p class="footer-lead">
+            Available for Senior Flutter & Mobile Engineering roles globally. Open to remote and relocation opportunities.
+          </p>
+
+          <div class="footer-links-grid">
+            <a href="mailto:mhamzakhan.dev@gmail.com" class="btn-pill btn-pill--primary" onclick="copyEmail(event)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>mhamzakhan.dev@gmail.com</span>
+            </a>
+            <a href="https://wa.me/923125655199?text=Hi%20Hamza,%20let's%20connect%20regarding%20a%20Flutter%20role" target="_blank" rel="noopener" class="btn-pill btn-pill--ghost">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+              <span>WhatsApp Direct</span>
+            </a>
+            <a href="https://linkedin.com/in/mhamzakhan-dev" target="_blank" rel="noopener" class="btn-pill btn-pill--ghost">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.762-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/HamzaCodes-Star" target="_blank" rel="noopener" class="btn-pill btn-pill--ghost">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>© <span id="curYear">2026</span> Muhammad Hamza Khan · All Rights Reserved.</div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem;">Crafted with Flutter & Modern Web Aesthetics</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Interactive Toast -->
+  <div class="portfolio-toast" id="pToast">Email copied to clipboard!</div>
+
+  <!-- Interactive Script -->
+  <script>
+    // =========================================================
+    // GLOBAL UTILITIES & CLOCK
+    // =========================================================
+    document.getElementById('curYear').textContent = new Date().getFullYear();
+
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('scrollProgress');
+      if (bar) bar.style.width = scrolled + '%';
+    });
+
+    // Real-time Phone Clock
+    function updatePhoneClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const clockEl = document.getElementById('phoneTime');
+      if (clockEl) clockEl.textContent = `${hours}:${minutes}`;
+    }
+    updatePhoneClock();
+    setInterval(updatePhoneClock, 10000);
+
+    // 3D Perspective Tilt on Mouse Movement
+    const phone = document.getElementById('phoneDevice');
+    const stage = document.querySelector('.phone-perspective');
+    if (stage && phone) {
+      stage.addEventListener('mousemove', (e) => {
+        const rect = stage.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const tiltX = Math.max(-10, Math.min(10, -y / 35));
+        const tiltY = Math.max(-12, Math.min(12, x / 30));
+        phone.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      });
+      stage.addEventListener('mouseleave', () => {
+        phone.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    }
+
+    // =========================================================
+    // WEB AUDIO SYNTHESIZER (No external audio files needed)
+    // =========================================================
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Synthesize warm alarm chord
+    function playSynthChime() {
+      try {
+        const ctx = getAudioContext();
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.1);
+          gain.gain.setValueAtTime(0.12, ctx.currentTime + idx * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.1 + 0.6);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + idx * 0.1);
+          osc.stop(ctx.currentTime + idx * 0.1 + 0.65);
+        });
+      } catch(e) {}
+    }
+
+    // Synthesize cash register ding
+    function playCashChime() {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(1318.51, ctx.currentTime); // E6
+        osc.frequency.setValueAtTime(1760.00, ctx.currentTime + 0.08); // A6
+        gain.gain.setValueAtTime(0.18, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.7);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.75);
+      } catch(e) {}
+    }
+
+    // Synthesize soft success tone
+    function playSuccessChime() {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1174.66, ctx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.45);
+      } catch(e) {}
+    }
+
+    // Ambient noise generator (deepsleep)
+    let ambientNode = null;
+    let ambientGain = null;
+    let ambientActive = false;
+
+    function toggleAmbientPlayback() {
+      const btn = document.getElementById('ambientPlayBtn');
+      if (ambientActive) {
+        if (ambientNode) {
+          ambientNode.stop();
+          ambientNode.disconnect();
+          ambientNode = null;
+        }
+        ambientActive = false;
+        if (btn) btn.textContent = '▶ Play Relaxing Soundscape';
+        showIslandNotification('deepsleep', 'Ambient Soundscape Stopped', '🌙');
+      } else {
+        try {
+          const ctx = getAudioContext();
+          const bufferSize = ctx.sampleRate * 2;
+          const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+          const data = buffer.getChannelData(0);
+          let lastOut = 0.0;
+          for (let i = 0; i < bufferSize; i++) {
+            const white = Math.random() * 2 - 1;
+            data[i] = (lastOut + (0.02 * white)) / 1.02; // Pink-ish noise filter
+            lastOut = data[i];
+            data[i] *= 3.5;
+          }
+
+          ambientNode = ctx.createBufferSource();
+          ambientNode.buffer = buffer;
+          ambientNode.loop = true;
+
+          const filter = ctx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.value = 650;
+
+          ambientGain = ctx.createGain();
+          ambientGain.gain.setValueAtTime(0.12, ctx.currentTime);
+
+          ambientNode.connect(filter);
+          filter.connect(ambientGain);
+          ambientGain.connect(ctx.destination);
+
+          ambientNode.start();
+          ambientActive = true;
+          if (btn) btn.textContent = '⏹ Stop Soundscape';
+          showIslandNotification('deepsleep', 'Playing Rain & Alpha Waves', '🌧️');
+        } catch(e) {
+          console.error(e);
+        }
+      }
+    }
+
+    function updateMixerVolume(channel, val) {
+      if (ambientGain && ambientActive) {
+        ambientGain.gain.setValueAtTime((val / 100) * 0.2, audioCtx.currentTime);
+      }
+    }
+
+    // =========================================================
+    // PHONE HARDWARE SIMULATION
+    // =========================================================
+    let currentVolume = 75;
+    let volTimer = null;
+
+    function adjustPhoneVolume(delta) {
+      currentVolume = Math.max(0, Math.min(100, currentVolume + delta * 15));
+      const hud = document.getElementById('phoneVolHud');
+      const bar = document.getElementById('phoneVolBar');
+      if (bar) bar.style.height = currentVolume + '%';
+      if (hud) {
+        hud.classList.add('visible');
+        clearTimeout(volTimer);
+        volTimer = setTimeout(() => hud.classList.remove('visible'), 1400);
+      }
+    }
+
+    function togglePhonePower() {
+      const screen = document.getElementById('phoneScreen');
+      if (screen) {
+        screen.classList.toggle('screen-off');
+      }
+    }
+
+    // Dynamic Island Live Activity
+    let islandTimer = null;
+    function showIslandNotification(title, subtitle, icon = '⚡', duration = 3200) {
+      const island = document.getElementById('dynamicIsland');
+      const titleEl = document.getElementById('islandTitle');
+      const subEl = document.getElementById('islandSubtitle');
+      const iconEl = document.getElementById('islandIcon');
+      if (!island || !titleEl || !subEl) return;
+
+      titleEl.textContent = title;
+      subEl.textContent = subtitle;
+      if (iconEl) iconEl.textContent = icon;
+
+      island.classList.add('expanded');
+      clearTimeout(islandTimer);
+      islandTimer = setTimeout(() => {
+        island.classList.remove('expanded');
+      }, duration);
+    }
+
+    function toggleDynamicIsland() {
+      const island = document.getElementById('dynamicIsland');
+      if (island) island.classList.toggle('expanded');
+    }
+
+    // =========================================================
+    // SUB-VIEW NAVIGATION (Inside phone views)
+    // =========================================================
+    function switchSubView(appKey, subKey, btnEl) {
+      const parentView = document.getElementById(`view-${appKey}`);
+      if (!parentView) return;
+
+      // Update subview display
+      parentView.querySelectorAll('.subview').forEach(s => s.classList.remove('active'));
+      const targetSub = document.getElementById(`sub-${appKey}-${subKey}`);
+      if (targetSub) targetSub.classList.add('active');
+
+      // Update button styling
+      if (btnEl) {
+        parentView.querySelectorAll('.phone-subnav-btn').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+    }
+
+    // =========================================================
+    // APP DATA TELEMETRY SPECIFICATIONS
+    // =========================================================
+    const appData = {
+      auralarm: {
+        title: "Auralarm",
+        badge: "0-to-1 Founder",
+        desc: "Spearheaded from concept to Google Play Production Approval. Solved rigorous background audio & foreground notification survival across Android 14 and 15 strict battery policies. Successfully conducted the mandatory 20-tester 14-day closed testing track and secured production rollout approval.",
+        specs: [
+          { k: "Architecture", v: "BLoC + Clean Architecture" },
+          { k: "Core Challenge", v: "Android 14/15 Background Audio" },
+          { k: "Play Store Status", v: "Production Approved ✔", color: "#34d399" },
+          { k: "Package ID", v: "com.duodesire.auralarm" }
+        ]
+      },
+      babybloom: {
+        title: "BabyBloom",
+        badge: "Closed Testing Track",
+        desc: "Infant milestone, developmental leaps, and awake windows tracking application. Solved predictive nap calculation algorithms based on age and circadian rhythm, with multi-caregiver real-time synchronization and WHO growth percentile curves.",
+        specs: [
+          { k: "Domain", v: "Pediatric Sleep & Milestones" },
+          { k: "Algorithm", v: "SweetSpot™ Awake Window Engine" },
+          { k: "Medical Standard", v: "WHO Growth Percentiles" },
+          { k: "Package ID", v: "com.duodesire.babybloom" }
+        ]
+      },
+      capsule: {
+        title: "Formality — Smart Wardrobe",
+        badge: "Studio Venture",
+        desc: "Minimalist wardrobe architect and daily stylist app built in Flutter (Formality). Implemented a decoupled offline-first database cache, vision-assisted garment ingestion, dynamic outfit matching algorithms, and automated ASO keyword optimization.",
+        specs: [
+          { k: "Domain", v: "Smart Wardrobe & AI Stylist" },
+          { k: "Architecture", v: "Clean Architecture + ViewModel" },
+          { k: "Ingestion", v: "Vision-based Batch Ingest" },
+          { k: "Storage", v: "Local SQLite + Isar Caching" }
+        ]
+      },
+      mixx: {
+        title: "Mixx by Tigo",
+        badge: "Tier-1 Fintech Super App",
+        desc: "Tier-1 mobile money and banking super-app operating at scale with millions of daily transactions. Architected with end-to-end SHA-256 SSL certificate pinning, biometric security layers, and real-time ledger accounting for Axian Group Limited.",
+        specs: [
+          { k: "Scale", v: "Millions of Active Transactions" },
+          { k: "Security", v: "SSL Pinning + Biometric Auth" },
+          { k: "State Pattern", v: "Event-driven State Machines" },
+          { k: "Client", v: "Axian Group Limited" }
+        ]
+      },
+      yas: {
+        title: "Mixx by yas",
+        badge: "Enterprise Digital Banking",
+        desc: "Modern digital banking suite featuring instant card issuance, biometric identity validation (KYC), personal wealth vaults, and automated savings ledgers with full banking compliance for Axian Group Limited.",
+        specs: [
+          { k: "Domain", v: "Digital Banking & Wealth" },
+          { k: "Security", v: "Biometric KYC + SSL Pinning" },
+          { k: "Group", v: "Axian Group Limited" },
+          { k: "Tech", v: "Clean Architecture + BLoC" }
+        ]
+      },
+      mobility: {
+        title: "Food & Mobility Logistics",
+        badge: "On-Demand Maps & Routing",
+        desc: "High-concurrency on-demand logistics application with real-time driver tracking, Google Maps polyline routing, live order dispatch via WebSockets, and secure payment settlement.",
+        specs: [
+          { k: "Mapping", v: "Google Maps SDK + Polylines" },
+          { k: "Real-time", v: "WebSockets GPS Streaming" },
+          { k: "Domain", v: "Ride Hailing & Food Logistics" },
+          { k: "Performance", v: "60 FPS Smooth Navigation" }
+        ]
+      },
+      watchverse: {
+        title: "WatchVerse",
+        badge: "Luxury Horology & Escrow",
+        desc: "High-end luxury watch marketplace with cryptographic buyer-seller escrow, physical authenticator inspection workflows, anti-counterfeit NFC chip integration, and real-time live auction bidding.",
+        specs: [
+          { k: "Domain", v: "Luxury Horology Marketplace" },
+          { k: "Escrow", v: "Cryptographic Milestone Escrow" },
+          { k: "Hardware", v: "Anti-Counterfeit NFC Tags" },
+          { k: "State", v: "BLoC + Stream Architecture" }
+        ]
+      },
+      deepsleep: {
+        title: "deepsleep",
+        badge: "Health & Sleep Audio",
+        desc: "Advanced sleep cycle and circadian rhythm companion. Employs hardware-level background audio service orchestration to play ambient multi-layered soundscapes while tracking sleep health metrics.",
+        specs: [
+          { k: "Domain", v: "Sleep Health & Diagnostics" },
+          { k: "Audio Engine", v: "Multi-track Ambient Mixer" },
+          { k: "OS Integration", v: "Lockscreen Media Controls" },
+          { k: "Performance", v: "Sub-5% Battery Overnight" }
+        ]
+      }
+    };
+
+    // =========================================================
+    // PHONE APP SWITCHER & BOTTOM NAV
+    // =========================================================
+    const bottomNavConfig = {
+      auralarm: [
+        { icon: "⏰", text: "Alarms", subview: "live" },
+        { icon: "📸", text: "Store", subview: "gallery" },
+        { icon: "🧩", text: "Missions", subview: "math" },
+        { icon: "⚙️", text: "Settings" }
+      ],
+      babybloom: [
+        { icon: "👶", text: "Today", subview: "sweetspot" },
+        { icon: "🍼", text: "Logger", subview: "log" },
+        { icon: "📈", text: "Growth", subview: "who" },
+        { icon: "👨‍👩‍👧", text: "Caregivers" }
+      ],
+      capsule: [
+        { icon: "👗", text: "Closet", subview: "wardrobe" },
+        { icon: "✨", text: "Stylist", subview: "stylist" },
+        { icon: "🔄", text: "Sync", subview: "sync" },
+        { icon: "👤", text: "Profile" }
+      ],
+      mixx: [
+        { icon: "💳", text: "Wallet", subview: "wallet" },
+        { icon: "🛡️", text: "Security", subview: "security" },
+        { icon: "🎮", text: "Game", subview: "ttt" },
+        { icon: "👤", text: "Account" }
+      ],
+      yas: [
+        { icon: "🏦", text: "Banking", subview: "banking" },
+        { icon: "💰", text: "Vault", subview: "vault" },
+        { icon: "🆔", text: "KYC", subview: "kyc" },
+        { icon: "⚙️", text: "Settings" }
+      ],
+      mobility: [
+        { icon: "🚖", text: "Rides", subview: "ride" },
+        { icon: "🍔", text: "Food", subview: "food" },
+        { icon: "📍", text: "Activity" },
+        { icon: "👤", text: "Profile" }
+      ],
+      watchverse: [
+        { icon: "⌚", text: "Vault", subview: "vault" },
+        { icon: "🔨", text: "Live Bid", subview: "bid" },
+        { icon: "🔒", text: "Escrow", subview: "escrow" },
+        { icon: "⭐", text: "Watchlist" }
+      ],
+      deepsleep: [
+        { icon: "🌙", text: "Bedtime", subview: "score" },
+        { icon: "🎵", text: "Mixer", subview: "mixer" },
+        { icon: "📊", text: "Score" },
+        { icon: "⚙️", text: "Routine" }
+      ]
+    };
+
+    let currentSimApp = "auralarm";
+
+    function updateBottomNav(appKey) {
+      currentSimApp = appKey;
+      const tabs = bottomNavConfig[appKey];
+      if (!tabs) return;
+
+      tabs.forEach((t, i) => {
+        const iconEl = document.getElementById(`navIcon${i}`);
+        const textEl = document.getElementById(`navText${i}`);
+        if (iconEl) iconEl.textContent = t.icon;
+        if (textEl) textEl.textContent = t.text;
+      });
+
+      document.querySelectorAll(".phone-nav-btn").forEach((btn, idx) => {
+        btn.classList.toggle("active", idx === 0);
+      });
+    }
+
+    function handlePhoneNavTab(tabIndex, btn) {
+      document.querySelectorAll(".phone-nav-btn").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+
+      const tabs = bottomNavConfig[currentSimApp];
+      if (tabs && tabs[tabIndex]) {
+        const tab = tabs[tabIndex];
+        if (tab.subview) {
+          const subnavBtns = document.querySelectorAll(`#view-${currentSimApp} .phone-subnav-btn`);
+          if (subnavBtns[tabIndex]) {
+            subnavBtns[tabIndex].click();
+          }
+        } else {
+          showIslandNotification(appData[currentSimApp]?.title || "App", `${tab.text} Active`, tab.icon, 1800);
+        }
+      }
+    }
+
+    function switchPhoneApp(appKey) {
+      updateBottomNav(appKey);
+      // Toggle phone screen view
+      document.querySelectorAll('.phone-view').forEach(v => v.classList.remove('active'));
+      const activeView = document.getElementById(`view-${appKey}`);
+      if (activeView) activeView.classList.add('active');
+
+      // Toggle chips
+      document.querySelectorAll('.app-chip').forEach(c => {
+        const onclickAttr = c.getAttribute('onclick') || '';
+        c.classList.toggle('active', onclickAttr.includes(`'${appKey}'`));
+      });
+
+      // Update right info card
+      const d = appData[appKey];
+      if (!d) return;
+
+      const titleEl = document.getElementById('stageInfoTitle');
+      if (titleEl) {
+        titleEl.innerHTML = `<span>${d.title}</span><span class="badge-pill-accent">${d.badge}</span>`;
+      }
+
+      const descEl = document.getElementById('stageInfoDesc');
+      if (descEl) descEl.textContent = d.desc;
+
+      const specsContainer = document.getElementById('stageSpecs');
+      if (specsContainer) {
+        specsContainer.innerHTML = d.specs.map(s => `
+          <div class="spec-item">
+            <div class="spec-key">${s.k}</div>
+            <div class="spec-val" style="${s.color ? 'color:' + s.color : ''}">${s.v}</div>
+          </div>
+        `).join('');
+      }
+
+      // Context-specific activations
+      if (appKey === 'mobility') {
+        startDriverMapSimulation();
+      }
+      showIslandNotification(d.title, d.badge, '📱', 2200);
+    }
+
+    // =========================================================
+    // AURALARM FEATURES
+    // =========================================================
+    let waveAnim = null;
+    let waveActive = false;
+    const canvas = document.getElementById('soundCanvas');
+
+    function drawWave() {
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width = canvas.offsetWidth;
+      const h = canvas.height = canvas.offsetHeight;
+      let step = 0;
+
+      function frame() {
+        ctx.clearRect(0, 0, w, h);
+        const bars = 28;
+        const barWidth = w / bars;
+
+        for (let i = 0; i < bars; i++) {
+          const height = waveActive 
+            ? Math.sin(step + i * 0.4) * (h / 2.6) + (h / 2.2) 
+            : Math.sin(i * 0.2) * 3 + (h / 2);
+          const x = i * barWidth + barWidth / 2;
+          ctx.fillStyle = waveActive ? '#00f0ff' : '#334155';
+          ctx.fillRect(x - 2, h - height, 4, height);
+        }
+
+        step += 0.15;
+        if (waveActive) {
+          waveAnim = requestAnimationFrame(frame);
+        } else {
+          // Render baseline
+          ctx.clearRect(0, 0, w, h);
+          for (let i = 0; i < bars; i++) {
+            const x = i * barWidth + barWidth / 2;
+            ctx.fillStyle = '#334155';
+            ctx.fillRect(x - 2, h / 2 - 2, 4, 4);
+          }
+        }
+      }
+      frame();
+    }
+
+    function toggleAudioWaveform() {
+      waveActive = !waveActive;
+      const btn = document.getElementById('waveBtnLabel');
+      if (btn) btn.textContent = waveActive ? '⏹ Stop Audio Stream' : '▶ Test Synth Alarm Tone';
+      if (waveActive) {
+        drawWave();
+        playSynthChime();
+        showIslandNotification('Auralarm', 'Escalating Audio Active', '🔊');
+      } else {
+        cancelAnimationFrame(waveAnim);
+        drawWave();
+      }
+    }
+
+    function toggleAlarmSwitch() {
+      const sw = document.getElementById('alarmSwitch');
+      if (!sw) return;
+      sw.classList.toggle('on');
+      const isOn = sw.classList.contains('on');
+      playSuccessChime();
+      showIslandNotification('Auralarm', isOn ? 'Alarm set for 07:00 AM' : 'Alarm Disabled', '⏰');
+    }
+
+    function setAuralarmShot(idx, btnEl) {
+      const img = document.getElementById('auralarmGalleryImg');
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = `assets/auralarm${idx}.png`;
+          img.style.opacity = '1';
+        }, 150);
+      }
+      document.querySelectorAll('#sub-auralarm-gallery .gallery-thumb-pill').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+    }
+
+    function solveMathMission() {
+      playSuccessChime();
+      showIslandNotification('Auralarm', 'Math Solved! Alarm Dismissed ✔', '🎉', 4000);
+    }
+
+    // =========================================================
+    // BABYBLOOM FEATURES
+    // =========================================================
+    let napSeconds = 34 * 60 + 12;
+    setInterval(() => {
+      napSeconds = Math.max(0, napSeconds - 1);
+      const m = Math.floor(napSeconds / 60);
+      const s = String(napSeconds % 60).padStart(2, '0');
+      const timerEl = document.getElementById('babyNapTimer');
+      if (timerEl) timerEl.textContent = `Next Nap in ${m}m ${s}s`;
+    }, 1000);
+
+    function quickLogBaby(activity) {
+      playSuccessChime();
+      const logs = document.getElementById('babyRecentLogs');
+      if (logs) {
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const newRow = document.createElement('div');
+        newRow.innerHTML = `• ${time} — ${activity} ✔`;
+        logs.prepend(newRow);
+      }
+      showIslandNotification('BabyBloom', `${activity} Logged`, '🍼');
+    }
+
+    // =========================================================
+    // CAPSULE FEATURES
+    // =========================================================
+    function simulateCapsuleSync() {
+      const status = document.getElementById('syncStatusText');
+      if (status) {
+        status.textContent = 'Syncing Delta with SQLite...';
+        status.style.color = '#fbbf24';
+        setTimeout(() => {
+          status.textContent = 'Local SQLite In Sync (0.04s)';
+          status.style.color = '#38bdf8';
+          playSuccessChime();
+          showIslandNotification('Formality', '48 Wardrobe Items In Sync', '👗');
+        }, 900);
+      }
+    }
+
+    function simulateVisionScan() {
+      playSuccessChime();
+      showIslandNotification('Formality', 'AI Tagged: Linen Shirt (Summer Casual)', '✨');
+    }
+
+    // =========================================================
+    // MIXX BY TIGO FEATURES
+    // =========================================================
+    let balance = 14850.00;
+    function simulateTransfer() {
+      if (balance >= 250) {
+        balance -= 250.00;
+        const balEl = document.getElementById('fintechBal');
+        if (balEl) balEl.textContent = `€ ${balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+        
+        playCashChime();
+        showIslandNotification('Mixx by Tigo', '€ 250.00 Transferred', '💸');
+
+        const txList = document.getElementById('txListContainer');
+        if (txList) {
+          const newTx = document.createElement('div');
+          newTx.style.cssText = 'display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--ink-muted); margin-bottom: 4px;';
+          newTx.innerHTML = `<span>Axian Vault Transfer</span><span style="color: #f87171;">- € 250.00</span>`;
+          txList.prepend(newTx);
+        }
+      }
+    }
+
+    function playTTT(idx, btn) {
+      if (btn.textContent === '-') {
+        btn.textContent = 'X';
+        btn.style.color = '#38bdf8';
+        playSuccessChime();
+        showIslandNotification('Mixx Multiplayer', 'Move synced via WebSockets', '🎮', 1500);
+      }
+    }
+
+    // =========================================================
+    // MIXX BY YAS FEATURES
+    // =========================================================
+    function updateYasInterest(val) {
+      const depEl = document.getElementById('depositDisplay');
+      const earnEl = document.getElementById('interestEarned');
+      if (depEl) depEl.textContent = `€ ${Number(val).toLocaleString()}`;
+      if (earnEl) {
+        const interest = val * 0.065;
+        earnEl.textContent = `+ € ${interest.toFixed(2)}`;
+      }
+    }
+
+    // =========================================================
+    // FOOD & MOBILITY ANIMATED MAP CANVAS
+    // =========================================================
+    let mapAnimId = null;
+    function startDriverMapSimulation() {
+      const mapCanvas = document.getElementById('mobilityCanvas');
+      if (!mapCanvas) return;
+      const ctx = mapCanvas.getContext('2d');
+      const w = mapCanvas.width = mapCanvas.offsetWidth;
+      const h = mapCanvas.height = mapCanvas.offsetHeight;
+
+      // Define polyline waypoints
+      const waypoints = [
+        { x: 30, y: 170 },
+        { x: 75, y: 150 },
+        { x: 120, y: 110 },
+        { x: 180, y: 100 },
+        { x: 230, y: 65 }
+      ];
+
+      let progress = 0;
+      function renderMap() {
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, w, h);
+
+        // Draw street grid lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.lineWidth = 1;
+        for (let x = 0; x < w; x += 30) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        }
+        for (let y = 0; y < h; y += 30) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+        }
+
+        // Draw Polyline Route
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 4;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        waypoints.forEach((pt, i) => {
+          if (i === 0) ctx.moveTo(pt.x, pt.y);
+          else ctx.lineTo(pt.x, pt.y);
+        });
+        ctx.stroke();
+
+        // Draw Destination User Pin (Pickup)
+        const dest = waypoints[waypoints.length - 1];
+        ctx.fillStyle = '#10b981';
+        ctx.beginPath();
+        ctx.arc(dest.x, dest.y, 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Calculate Car Position along path
+        progress += 0.006;
+        if (progress > 1) progress = 0;
+        
+        const totalSegments = waypoints.length - 1;
+        const segIdx = Math.min(totalSegments - 1, Math.floor(progress * totalSegments));
+        const segFrac = (progress * totalSegments) - segIdx;
+        const p1 = waypoints[segIdx];
+        const p2 = waypoints[segIdx + 1];
+
+        const carX = p1.x + (p2.x - p1.x) * segFrac;
+        const carY = p1.y + (p2.y - p1.y) * segFrac;
+
+        // Draw Moving Car Icon
+        ctx.fillStyle = '#f59e0b';
+        ctx.beginPath();
+        ctx.arc(carX, carY, 7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        mapAnimId = requestAnimationFrame(renderMap);
+      }
+      cancelAnimationFrame(mapAnimId);
+      renderMap();
+    }
+
+    function requestRideDemo() {
+      playSuccessChime();
+      showIslandNotification('Mobility Driver Assigned', 'Toyota Prius 2 min away', '🚖', 3500);
+      startDriverMapSimulation();
+    }
+
+    // =========================================================
+    // WATCHVERSE FEATURES
+    // =========================================================
+    let watchPrice = 14200.00;
+    function placeWatchBid() {
+      watchPrice += 250.00;
+      const el = document.getElementById('watchCurrentPrice');
+      if (el) el.textContent = `€ ${watchPrice.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+      playCashChime();
+      showIslandNotification('WatchVerse', 'Bid Submitted to Escrow', '💎');
+    }
+
+    // Initialize baseline canvas
+    drawWave();
+  </script>
+</body>
+</html>

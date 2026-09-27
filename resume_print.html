@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Muhammad Hamza Khan - Resume</title>
+<style>
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1e293b;
+    line-height: 1.45;
+    font-size: 9.8pt;
+    background: #fff;
+  }
+  .header {
+    text-align: center;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+  }
+  .name {
+    font-size: 22pt;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    margin-bottom: 2px;
+  }
+  .title {
+    font-size: 11.5pt;
+    font-weight: 600;
+    color: #0284c7;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .contact-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 8.8pt;
+    color: #475569;
+  }
+  .contact-bar a {
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .section-title {
+    font-size: 10.5pt;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 3px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+  .profile-text {
+    font-size: 9.2pt;
+    color: #334155;
+    line-height: 1.5;
+    text-align: justify;
+  }
+  .job-block {
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+  }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+  }
+  .job-company {
+    font-weight: 700;
+    font-size: 10pt;
+    color: #0f172a;
+  }
+  .job-role {
+    font-weight: 600;
+    color: #0284c7;
+    font-size: 9.2pt;
+  }
+  .job-date {
+    font-size: 8.8pt;
+    font-weight: 600;
+    color: #64748b;
+    white-space: nowrap;
+  }
+  .bullets {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 3px;
+  }
+  .bullets li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 8.9pt;
+    color: #334155;
+    line-height: 1.4;
+  }
+  .bullets li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #0284c7;
+    font-weight: bold;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 4px 10px;
+    font-size: 8.8pt;
+    margin-top: 4px;
+  }
+  .skills-cat {
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .skills-list {
+    color: #334155;
+  }
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 9.2pt;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="name">Muhammad Hamza Khan</div>
+    <div class="title">Senior Flutter Developer & Mobile Architect</div>
+    <div class="contact-bar">
+      <span>✉ <a href="mailto:mhamzakhan.dev@gmail.com">mhamzakhan.dev@gmail.com</a></span>
+      <span>📱 +92 312 5655199</span>
+      <span>📍 Islamabad, Pakistan</span>
+      <span>🔗 <a href="https://linkedin.com/in/mhamzakhan-dev">linkedin.com/in/mhamzakhan-dev</a></span>
+      <span>💻 <a href="https://github.com/HamzaCodes-Star">github.com/HamzaCodes-Star</a></span>
+    </div>
+  </div>
+
+  <div class="section-title">Professional Summary</div>
+  <div class="profile-text">
+    Results-driven <b>Senior Flutter Developer & Mobile Architect</b> with over 4 years of proven commercial experience building high-performance, secure, and scalable cross-platform mobile applications. Proven track record leading enterprise fintech platforms handling millions of transactions, as well as 0-to-1 product ventures achieving strict Google Play Store production approvals. Expert in Dart, Clean Architecture (BLoC, Riverpod, MVVM), hardware-backed security (SSL Pinning, Biometrics), offline-first delta synchronization, and automated CI/CD deployment pipelines.
+  </div>
+
+  <div class="section-title">Professional Experience</div>
+
+  <!-- Nirox (Independent Venture Studio) -->
+  <div class="job-block">
+    <div class="job-header">
+      <div>
+        <span class="job-company">Nirox</span> — <span class="job-role">Founder & Principal Mobile Architect</span>
+      </div>
+      <span class="job-date">2026 – Present</span>
+    </div>
+    <ul class="bullets">
+      <li><b>Auralarm (Production Approved on Google Play Store):</b> Architected a smart mission alarm and sleep tracking platform from 0 to 1 in Flutter; solved Android 14/15 battery-optimization survival via custom foreground audio channels; successfully directed the mandatory 20-tester 14-day closed testing track and secured direct Google Production Approval.</li>
+      <li><b>Formality (Minimalist Wardrobe Architect & Daily Stylist):</b> Designed a decoupled cross-platform architecture with local SQLite/Isar caching, AI vision batch-capture ingestion, and delta synchronization.</li>
+      <li><b>BabyBloom (Parenting & Developmental Leap Tracker):</b> Engineered a multi-caregiver real-time sync system with predictive nap/awake windows and WHO growth percentile curves.</li>
+      <li>Formulated and deployed end-to-end Fastlane and GitHub Actions CI/CD automation pipelines for multi-track store distributions.</li>
+    </ul>
+  </div>
+
+  <!-- Veroke -->
+  <div class="job-block">
+    <div class="job-header">
+      <div>
+        <span class="job-company">Veroke</span> — <span class="job-role">Sr. Flutter Developer</span>
+      </div>
+      <span class="job-date">07/2025 – Present</span>
+    </div>
+    <ul class="bullets">
+      <li>Architect and maintain high-concurrency enterprise Flutter applications for Saudi Arabian and Middle Eastern corporate clients, ensuring full compliance with regional financial and data governance regulations.</li>
+      <li>Engineer resilient RESTful API layers, background synchronization workers, and real-time state listeners for seamless cross-border data continuity.</li>
+      <li>Spearhead code quality initiatives, modular component architecture, and memory profiling to maintain 60 FPS performance across diverse Android and iOS devices.</li>
+      <li>Collaborate closely with distributed multi-disciplinary engineering squads across timezones to accelerate release cadences.</li>
+    </ul>
+  </div>
+
+  <!-- Evamp & Saanga / Axian Group -->
+  <div class="job-block">
+    <div class="job-header">
+      <div>
+        <span class="job-company">Evamp & Saanga (Working with Axian Group Limited)</span> — <span class="job-role">Flutter Developer</span>
+      </div>
+      <span class="job-date">07/2023 – 07/2025</span>
+    </div>
+    <ul class="bullets">
+      <li>Spearheaded core mobile development for flagship Fintech super-applications (<b>Mixx by Tigo</b>, <b>Mixx by yas</b>, <b>TMoney</b>) serving millions of active banking and mobile money users.</li>
+      <li>Enforced rigorous enterprise security standards, including SHA-256 SSL/TLS certificate pinning, biometric authentication (FaceID/Fingerprint), and encrypted on-device storage.</li>
+      <li>Designed and implemented real-time multiplayer interactive features using WebSockets and Firebase Cloud Messaging.</li>
+      <li>Established comprehensive automated testing suites (unit, widget, and integration tests) that improved overall code coverage and minimized post-release regression defects.</li>
+      <li>Partnered with banking API architects, UI/UX design leads, and security audit teams to ensure friction-free KYC and payments.</li>
+    </ul>
+  </div>
+
+  <!-- Sigi Technologies -->
+  <div class="job-block">
+    <div class="job-header">
+      <div>
+        <span class="job-company">Sigi Technologies</span> — <span class="job-role">Flutter Developer</span>
+      </div>
+      <span class="job-date">06/2022 – 06/2023</span>
+    </div>
+    <ul class="bullets">
+      <li>Developed and shipped multiple cross-platform mobile apps for Android and iOS using MVVM, MVP, and Clean architectures.</li>
+      <li>Integrated payment gateway SDKs (Stripe, local payment processors) and engineered reliable transaction processing workflows.</li>
+      <li>Optimized asynchronous data flow and state management, reducing app startup latency by over 30%.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Technical Skills & Expertise</div>
+  <div class="skills-grid">
+    <div class="skills-cat">Core Mobile Tech:</div>
+    <div class="skills-list">Flutter, Dart, Android (Java, Kotlin), iOS (Swift), Method Channels, Custom Renderers</div>
+
+    <div class="skills-cat">Architecture & State:</div>
+    <div class="skills-list">Clean Architecture, BLoC, Riverpod, Provider, MVVM, MVP, Repository Pattern, Freezed</div>
+
+    <div class="skills-cat">Security & Fintech:</div>
+    <div class="skills-list">SSL Pinning, Biometric Authentication, Encrypted SharedPreferences, JWT, Payment Gateways</div>
+
+    <div class="skills-cat">Data & Storage:</div>
+    <div class="skills-list">SQLite, Isar, Hive, Drift, Firebase (Firestore, Auth, Storage, Cloud Messaging), Supabase, REST, WebSockets</div>
+
+    <div class="skills-cat">Testing & DevOps:</div>
+    <div class="skills-list">Unit Testing, Widget Testing, Integration Testing, Mocktail, Fastlane, GitHub Actions, CI/CD Pipelines</div>
+
+    <div class="skills-cat">Tools & Platforms:</div>
+    <div class="skills-list">Git, GitHub, Bitbucket, Google Play Console (Closed/Open Testing), TestFlight, App Store Optimization (ASO)</div>
+  </div>
+
+  <div class="section-title">Education & Credentials</div>
+  <div class="edu-row">
+    <div>
+      <b>COMSATS University Islamabad, Attock Campus</b> — <i>Bachelor of Science in Computer Science (BS CS)</i>
+    </div>
+    <span class="job-date">2018 – 2022</span>
+  </div>
+  <div style="font-size: 8.5pt; color: #475569; margin-top: 2px;">
+    • <b>German Anabin Database Recognition: Status H+</b> (Equivalence to German Higher Education Degree).
+  </div>
+
+</body>
+</html>
