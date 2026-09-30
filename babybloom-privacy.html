@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BabyBloom — Privacy Policy & Terms of Service</title>
+  <link rel="icon" type="image/png" href="assets/babybloom_icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0e17;
+      --bg-card: rgba(18, 26, 43, 0.75);
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --accent-primary: #f472b6;
+      --accent-secondary: #38bdf8;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(ellipse 60% 40% at 20% 10%, rgba(244, 114, 182, 0.12), transparent 50%),
+        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(56, 189, 248, 0.1), transparent 50%);
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--bg-card-border);
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 8px 16px;
+      border-radius: 50px;
+      border: 1px solid var(--bg-card-border);
+    }
+
+    .logo-badge img {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .logo-badge span {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #fff 40%, var(--accent-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .last-updated {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Tab Switcher */
+    .tabs-nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      padding: 10px 22px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--bg-card-border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .tab-btn.active {
+      background: var(--accent-primary);
+      color: #000;
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 20px rgba(244, 114, 182, 0.35);
+    }
+
+    /* Content Cards */
+    .policy-section {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .policy-section h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .policy-section h2 .icon {
+      font-size: 1.25rem;
+    }
+
+    .policy-section p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .policy-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .policy-section ul {
+      margin: 0.5rem 0 0.75rem 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .policy-section li {
+      margin-bottom: 0.35rem;
+    }
+
+    .highlight-box {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+      color: #bae6fd;
+    }
+
+    .highlight-box--warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: rgba(245, 158, 11, 0.25);
+      color: #fde68a;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--bg-card-border);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .footer a {
+      color: var(--accent-secondary);
+      text-decoration: none;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo-badge">
+        <img src="assets/babybloom_icon.png" alt="BabyBloom Icon" />
+        <span>BabyBloom</span>
+      </div>
+      <h1>Privacy Policy & Terms of Service</h1>
+      <div class="last-updated">Official Legal Notice · Effective Date: September 30, 2026</div>
+    </header>
+
+    <!-- Tab Selector -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="tabBtnPrivacy" onclick="switchLegalTab('privacy')">🔒 Privacy Policy</button>
+      <button class="tab-btn" id="tabBtnTerms" onclick="switchLegalTab('terms')">📜 Terms of Service</button>
+      <button class="tab-btn" id="tabBtnData" onclick="switchLegalTab('data')">🛡️ Data Safety & Rights</button>
+    </div>
+
+    <!-- ==============================================
+         TAB 1: PRIVACY POLICY
+         ============================================== -->
+    <div class="tab-content active" id="content-privacy">
+      
+      <div class="policy-section">
+        <h2><span class="icon">👶</span> 1. Commitment to Family Privacy</h2>
+        <p>BabyBloom ("we", "our", or "the App") is built with a deep commitment to family and child data privacy. We understand the sensitivity of infant care logs and developmental records. We operate on a strict <strong>data-minimization principle</strong>: we only collect the minimum information required to log, compute circadian sleep predictions, and synchronize care records between authorized parents and caregivers.</p>
+        <div class="highlight-box">
+          <strong>Key Promise:</strong> We do NOT sell, rent, monetize, or broker personal family data to advertisers or third-party data brokers. Zero advertising SDKs are embedded in the App.
+        </div>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">📊</span> 2. Information We Collect</h2>
+        <p>When you use BabyBloom, we process the following categories of information:</p>
+        <ul>
+          <li><strong>Account Information:</strong> Name, email address, and authentication credentials managed securely via Firebase Authentication (Google Sign-In or Email/Password).</li>
+          <li><strong>Infant Care Logs:</strong> Timestamps and quantities for feeding (nursing timer, bottle volume), diaper changes (wet, dirty), sleep sessions (naps, night sleep), tummy time, medications (e.g. Vitamin D), and milestone achievements.</li>
+          <li><strong>Pediatric Growth Metrics:</strong> Weight, height/length, and head circumference entries used to calculate standardized World Health Organization (WHO) growth percentile curves.</li>
+          <li><strong>Device & Technical Diagnostics:</strong> Anonymous crash reports, device model, operating system version, and Firebase Cloud Messaging (FCM) tokens required to deliver real-time caregiver sync and nap reminders.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">⚙️</span> 3. How We Use Your Information</h2>
+        <p>Your data is processed strictly for the following operational purposes:</p>
+        <ul>
+          <li>To power interactive developmental timelines, circadian nap predictors (SweetSpot™), and WHO percentile growth charts.</li>
+          <li>To synchronize care events in real time across invited family members (parents, grandparents, nannies).</li>
+          <li>To generate optional smart pediatric digests using Google Gemini AI models. AI prompts receive strictly anonymized care parameters and are never used to train public foundational AI models.</li>
+          <li>To back up your family's records securely in cloud storage so you never lose milestones when switching devices.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">👨‍👩‍👧</span> 4. Multi-Caregiver Sharing & Access Control</h2>
+        <p>BabyBloom allows primary parents to invite secondary caregivers to collaborate. All shared logs are visible only to users you explicitly invite. Primary account holders have full authority to revoke caregiver access at any time, terminating immediate sync to that device.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">🛡️</span> 5. Security & Encryption Standards</h2>
+        <p>All data transmitted between the BabyBloom mobile application and backend services is encrypted in transit using industry-standard <strong>Transport Layer Security (TLS 1.3 / HTTPS)</strong>. Database records in Google Cloud Firestore are encrypted at rest using AES-256 cryptographic standards.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">🚸</span> 6. Children's Online Privacy Protection (COPPA & GDPR-K)</h2>
+        <p>BabyBloom is a parental utility application designed for use by parents, legal guardians, and adult caregivers aged 18 and older. The application is <strong>not directed to children under 13</strong>, and children do not create accounts or interact with the software directly. All data regarding infants is inputted solely by their lawful adult guardians.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">🗑️</span> 7. Data Retention & Account Deletion</h2>
+        <p>Your data is retained for as long as your account remains active. You maintain complete sovereignty over your information:</p>
+        <ul>
+          <li>You can delete individual care logs or baby profiles directly within the App settings at any time.</li>
+          <li>You can permanently delete your entire account and all associated cloud records via <strong>Settings &rarr; Account &rarr; Delete Account</strong>, or by emailing our Data Protection Officer at <a href="mailto:support@babybloom.app" style="color: var(--accent-secondary);">support@babybloom.app</a>. Deletion is executed within 30 days.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ==============================================
+         TAB 2: TERMS OF SERVICE
+         ============================================== -->
+    <div class="tab-content" id="content-terms">
+      
+      <div class="policy-section">
+        <h2><span class="icon">📜</span> 1. Acceptance of Terms</h2>
+        <p>By downloading, installing, or accessing BabyBloom, you agree to be bound by these Terms of Service. If you do not agree to these terms, do not install or use the application.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">🩺</span> 2. Medical & Pediatric Advice Disclaimer (Important)</h2>
+        <div class="highlight-box highlight-box--warning">
+          <strong>Medical Notice:</strong> BabyBloom is an informational log and wellness tracking tool. It is <strong>NOT</strong> a certified medical device, diagnostic platform, or substitute for professional pediatric clinical judgment.
+        </div>
+        <p>The developmental milestones, WHO growth curves, and AI-generated insights are provided solely for general educational and organizational reference. Always consult a licensed pediatrician, physician, or emergency medical provider regarding any infant health concerns, feeding difficulties, or abnormal symptoms.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">📱</span> 3. User Responsibilities & Acceptable Use</h2>
+        <p>You agree to use BabyBloom only for lawful personal family tracking purposes. You may not:</p>
+        <ul>
+          <li>Reverse-engineer, decompile, or disassemble the application binaries.</li>
+          <li>Attempt unauthorized access to backend cloud servers or other users' accounts.</li>
+          <li>Upload abusive, malicious, or infringing content.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">💳</span> 4. Pricing & Future Subscriptions</h2>
+        <p>The core BabyBloom mobile app is provided <strong>Free of Charge</strong>. In future releases, optional premium features (such as extended multi-caregiver capacity or advanced historical PDF export) may be offered via Google Play In-App Subscriptions. Subscriptions can be managed or canceled at any time via your Google Play account settings.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">⚖️</span> 5. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, BabyBloom and its developers shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your access to or use of the application.</p>
+      </div>
+
+    </div>
+
+    <!-- ==============================================
+         TAB 3: DATA SAFETY & COMPLIANCE
+         ============================================== -->
+    <div class="tab-content" id="content-data">
+      
+      <div class="policy-section">
+        <h2><span class="icon">📋</span> Google Play Data Safety Summary</h2>
+        <p>The table below summarizes our declarations for the Google Play Store Data Safety section:</p>
+        <ul>
+          <li><strong>Data Encrypted in Transit:</strong> Yes (HTTPS / TLS 1.3).</li>
+          <li><strong>Data Encrypted at Rest:</strong> Yes (AES-256 cloud encryption).</li>
+          <li><strong>Account Deletion Mechanism:</strong> Yes (In-app one-tap account deletion + email request).</li>
+          <li><strong>Third-Party Ad Networks:</strong> None (No AdMob, No Facebook Ads SDK).</li>
+          <li><strong>Data Shared with Third Parties:</strong> None.</li>
+          <li><strong>Data Collected:</strong> Personal info (Name/Email for auth), Health & Care Logs (Feeding, sleep, diaper, measurements), Device ID (Analytics/Crash reporting).</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2><span class="icon">📬</span> Contact Information</h2>
+        <p>For any privacy questions, data access requests, or terms inquiries, please reach out to our team:</p>
+        <p><strong>BabyBloom Engineering & Privacy Operations</strong><br />
+        Lead Developer: Muhammad Hamza Khan<br />
+        Email: <a href="mailto:support@babybloom.app" style="color: var(--accent-secondary);">support@babybloom.app</a> / <a href="mailto:hamzakhan.dev@gmail.com" style="color: var(--accent-secondary);">hamzakhan.dev@gmail.com</a><br />
+        Website: <a href="https://hamzacodes-star.github.io" target="_blank" style="color: var(--accent-secondary);">hamzacodes-star.github.io</a></p>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2026 BabyBloom. All rights reserved. Developed by <a href="https://hamzacodes-star.github.io">Hamza Khan</a>.</p>
+      <p style="margin-top: 4px; font-size: 0.78rem;">Designed for Android & iOS with Flutter.</p>
+    </footer>
+  </div>
+
+  <script>
+    function switchLegalTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      if (tab === 'privacy') {
+        document.getElementById('tabBtnPrivacy').classList.add('active');
+        document.getElementById('content-privacy').classList.add('active');
+      } else if (tab === 'terms') {
+        document.getElementById('tabBtnTerms').classList.add('active');
+        document.getElementById('content-terms').classList.add('active');
+      } else if (tab === 'data') {
+        document.getElementById('tabBtnData').classList.add('active');
+        document.getElementById('content-data').classList.add('active');
+      }
+    }
+
+    // Auto-switch tab based on URL hash
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('terms')) {
+        switchLegalTab('terms');
+      } else if (hash.includes('data')) {
+        switchLegalTab('data');
+      }
+    });
+  </script>
+</body>
+</html>
