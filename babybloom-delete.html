@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BabyBloom — Account & Data Deletion</title>
+  <link rel="icon" type="image/png" href="assets/babybloom_icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0e17;
+      --bg-card: rgba(18, 26, 43, 0.75);
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --accent-primary: #f472b6;
+      --accent-secondary: #38bdf8;
+      --accent-rose: #f43f5e;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(ellipse 60% 40% at 20% 10%, rgba(244, 114, 182, 0.12), transparent 50%),
+        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(56, 189, 248, 0.1), transparent 50%);
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--bg-card-border);
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-rose);
+      margin-bottom: 1rem;
+    }
+
+    .title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(12px);
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    ol, ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    li {
+      margin-bottom: 0.6rem;
+    }
+
+    strong {
+      color: #fff;
+    }
+
+    .btn-delete {
+      display: inline-block;
+      background: linear-gradient(135deg, #f43f5e, #e11d48);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      margin-top: 0.75rem;
+      transition: opacity 0.2s;
+    }
+
+    .btn-delete:hover {
+      opacity: 0.9;
+    }
+
+    .notice-box {
+      background: rgba(244, 63, 94, 0.08);
+      border-left: 4px solid var(--accent-rose);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--bg-card-border);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="app-badge">🗑️ Data Management & User Rights</div>
+      <h1 class="title">Account & Data Deletion Request</h1>
+      <p class="subtitle">BabyBloom by DuoDesire Tech | Google Play User Data Policy Compliance</p>
+    </div>
+
+    <!-- Section 1: Overview -->
+    <div class="card">
+      <h2><span>🛡️</span> Your Right to Data Erasure</h2>
+      <p>At <strong>BabyBloom</strong> (developed by <strong>DuoDesire Tech</strong>), we believe parents own 100% of their family's data. You have the absolute right to request the permanent deletion of your account and all associated personal and infant health tracking information at any time.</p>
+    </div>
+
+    <!-- Section 2: How to Delete -->
+    <div class="card">
+      <h2><span>📲</span> Method 1: Delete Directly Inside the App (Instant)</h2>
+      <p>You can execute an immediate and permanent deletion of your account from within BabyBloom:</p>
+      <ol>
+        <li>Open the <strong>BabyBloom</strong> application on your mobile device.</li>
+        <li>Log in to your account.</li>
+        <li>Navigate to the <strong>Profile / Settings</strong> screen from the bottom navigation bar.</li>
+        <li>Scroll down to <strong>Account & Security</strong>.</li>
+        <li>Tap <strong>Delete Account</strong> and confirm your request.</li>
+      </ol>
+      <p>Upon confirmation, your authentication session is terminated, and all profile data is immediately purged from our active databases.</p>
+    </div>
+
+    <!-- Method 2: Web / Email -->
+    <div class="card">
+      <h2><span>✉️</span> Method 2: Request Deletion via Email (Web Request)</h2>
+      <p>If you have uninstalled the app or cannot log in, you can submit a manual deletion request directly to our official developer support team:</p>
+      
+      <div class="notice-box">
+        <p style="margin-bottom: 0.5rem;"><strong>Send your deletion request to:</strong></p>
+        <p style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">
+          <a href="mailto:duodesireofficial@gmail.com?subject=BabyBloom%20Account%20Deletion%20Request" style="color: var(--accent-secondary); text-decoration: none;">duodesireofficial@gmail.com</a>
+        </p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Please send the request from the email address registered with your BabyBloom account so we can verify ownership.</p>
+      </div>
+
+      <a class="btn-delete" href="mailto:duodesireofficial@gmail.com?subject=BabyBloom%20Account%20Deletion%20Request&body=Hello%20DuoDesire%20Support,%0A%0APlease%20permanently%20delete%20my%20BabyBloom%20account%20and%20all%20associated%20data.%0A%0ARegistered%20Email:%20">
+        ✉️ Submit Deletion Request by Email
+      </a>
+    </div>
+
+    <!-- Section 3: Data Retention & Types of Data Deleted -->
+    <div class="card">
+      <h2><span>📊</span> Data Retention & Erasure Scope</h2>
+      <p>When an account is deleted, the following data is permanently purged:</p>
+      <ul>
+        <li><strong>Account Credentials:</strong> Your user ID, display name, and email address in Firebase Authentication.</li>
+        <li><strong>Baby Profiles:</strong> Baby names, birth dates, gender, and avatar photos in Cloud Firestore & Firebase Storage.</li>
+        <li><strong>Care & Health Logs:</strong> All diaper logs, nursing & bottle feeding records, sleep sessions, medication records, and milestone notes.</li>
+        <li><strong>AI Insights History:</strong> Generated summaries and pediatric guidance records.</li>
+      </ul>
+
+      <p><strong>Data Retained:</strong> We retain <strong>zero personal data</strong> after account deletion. Non-identifiable aggregate crash reports (without user identifiers) may remain in Google Play Console crash logs as standard technical diagnostic data.</p>
+      
+      <p><strong>Timeline:</strong> In-app deletions take effect <strong>instantly</strong>. Email-requested deletions are processed and fully wiped within <strong>30 days</strong>.</p>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2026 DuoDesire Tech. All rights reserved.</p>
+      <p>Official Developer Contact: <a href="mailto:duodesireofficial@gmail.com" style="color: var(--accent-secondary); text-decoration: none;">duodesireofficial@gmail.com</a></p>
+      <p style="margin-top: 0.5rem;">
+        <a href="babybloom-privacy.html" style="color: var(--text-muted); text-decoration: none; margin-right: 1rem;">Privacy Policy</a>
+        <a href="babybloom-terms.html" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
